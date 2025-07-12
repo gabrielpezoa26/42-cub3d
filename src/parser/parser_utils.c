@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parser_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/10 18:22:43 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/12 16:41:11 by gcesar-n         ###   ########.fr       */
+/*   Created: 2025/07/12 15:59:31 by gcesar-n          #+#    #+#             */
+/*   Updated: 2025/07/12 16:41:26 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
-int	main(int ac, char **av)
+bool	is_valid_char(int c)
 {
-	if (!parse_input(ac, av))
-		return (1);
-	// inittt();
-	// execute();
-	printf("DEBUG: deu bom\n");
-	return (0);
+	if (c == 0 || c == 1 || c == 'W' || c == 'A' || c == 'S' || 'D')
+		return (true);
+	else
+		return (false);
+}
+
+bool	is_valid_extension(const char *filename)
+{
+	int	len;
+
+	len = ft_strlen(filename);
+	if (len < 5)
+		return (0);
+	filename += len - 4;
+	return (ft_strncmp(filename, ".cub", 4) == 0);
 }

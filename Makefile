@@ -15,8 +15,11 @@ OBJ_DIR = objects
 DEPS = ../includes/cub3d.h
 
 SRC_DIR = src
+PARSER_DIR = src/parser
 
-SRC = $(SRC_DIR)/main.c
+SRC = $(SRC_DIR)/main.c \
+		$(PARSER_DIR)/parser.c \
+		$(PARSER_DIR)/parser_utils.c \
 
 OBJS = $(SRC:%.c=$(OBJ_DIR)/%.o)
 
