@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 18:22:52 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/12 16:42:22 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/07/13 01:17:11 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,19 @@
 
 /*---------MACROS---------*/
 # define INVALID_ARGC "Invalid arg count\n"
-# define FORMAT "Invalid file extension (.cub) \n"
+# define FORMAT "Invalid format. Correct format:\n./cub3D file.cub\n"
+# define MAP "Invalid map!!\n"
 
-
-// typedef struct s_data
-// {
-	
-// }	t_data;
+typedef struct s_map
+{
+	int		rows_amount;
+	int		cols_amount;
+}	t_map;
 
 /*---------PARSER---------*/
 bool	parse_input(int argc, char **argv);
 bool	is_valid_char(int c);
 bool	is_valid_extension(const char *filename);
+bool	parse_file(char **av);
 
 #endif

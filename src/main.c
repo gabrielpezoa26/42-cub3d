@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 18:22:43 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/12 16:41:11 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/07/13 01:15:21 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ int	main(int ac, char **av)
 {
 	if (!parse_input(ac, av))
 		return (1);
-	// inittt();
-	// execute();
+	// init();
+	// execute(), hooks, etc;
 	printf("DEBUG: deu bom\n");
 	return (0);
 }

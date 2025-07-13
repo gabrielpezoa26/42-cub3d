@@ -1,0 +1,9 @@
+12/07
+
+-> ler cada linha c a gnl (parecido c a logica do Fdf)
+    cada linha tem q ter duas "paredes"
+    cada coluna tem q ter duas paredes
+
+-> validar linha por linha (so pode 1, 0, ou WASD, e whitespace)
+
+-> dps n sei

@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 13:54:07 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/12 16:42:13 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/07/13 01:16:06 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,10 @@ bool	parse_input(int ac, char **av)
 		printf("%s", FORMAT);
 		return (false);
 	}
+	// if (!parse_file(av[1]))
+	// {
+	// 	printf("%s", MAP)
+	// 	return (false);
+	// }
 	return (true);
 }
