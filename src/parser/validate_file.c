@@ -1,41 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   validate_file.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/12 13:54:07 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/14 15:12:02 by gcesar-n         ###   ########.fr       */
+/*   Created: 2025/07/13 00:46:41 by gcesar-n          #+#    #+#             */
+/*   Updated: 2025/07/14 15:41:08 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static bool	check_argc(int argc)
+bool	validate_file(char **av)
 {
-	if (argc == 2)
-		return (true);
-	else
-		return (false);
-}
+	int		fd;
+	t_map	*map;
 
-bool	parse_input(int ac, char **av)
-{
-	if (!check_argc(ac))
+	fd = open(av[1], O_RDONLY, 0777);
+	if (!fd)
+		printf("Error opening file\n");
+	map = malloc(sizeof(t_map));
+	if (!map)
 	{
-		printf("%s", INVALID_ARGC);
+		printf("vishhh\n");
 		return (false);
 	}
-	if (!is_valid_extension(av[1]))
-	{
-		printf("%s", FORMAT);
+	if (!parse_textures(map))
 		return (false);
-	}
-	if (!validate_file(&av[1]))
-	{
-		printf("%s", MAP);
-		return (false);
-	}
+	// if (!parse_map(map))
+	// 	return (false);
 	return (true);
 }
+

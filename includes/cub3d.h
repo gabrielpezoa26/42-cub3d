@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 18:22:52 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/13 01:17:11 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/07/14 15:38:58 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,16 @@
 # define FORMAT "Invalid format. Correct format:\n./cub3D file.cub\n"
 # define MAP "Invalid map!!\n"
 
+// typedef struct s_info
+// {
+// 	char	*north_texture;
+// 	char	*south_texture;
+// 	char	*west_texture;
+// 	char	*east_texture;
+// 	char	*floor_color;
+// 	char	*ceiling_color;
+// }	t_info;
+
 typedef struct s_map
 {
 	int		rows_amount;
@@ -38,6 +48,10 @@ typedef struct s_map
 bool	parse_input(int argc, char **argv);
 bool	is_valid_char(int c);
 bool	is_valid_extension(const char *filename);
-bool	parse_file(char **av);
+bool	validate_file(char **av);
+bool	parse_textures(t_map *map);
+bool	parse_map(t_map *map);
 
+/*---------CLEANUP---------*/
+void	free_array(void **tab, size_t len);
 #endif

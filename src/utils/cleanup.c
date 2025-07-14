@@ -1,41 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/12 13:54:07 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/14 15:12:02 by gcesar-n         ###   ########.fr       */
+/*   Created: 2025/07/14 15:10:21 by gcesar-n          #+#    #+#             */
+/*   Updated: 2025/07/14 15:26:29 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static bool	check_argc(int argc)
+void	free_array(void **tab, size_t len)
 {
-	if (argc == 2)
-		return (true);
-	else
-		return (false);
-}
+	size_t	i;
 
-bool	parse_input(int ac, char **av)
-{
-	if (!check_argc(ac))
+	i = 0;
+	while (i < len && tab[i] != NULL)
 	{
-		printf("%s", INVALID_ARGC);
-		return (false);
+		free(tab[i]);
+		i++;
 	}
-	if (!is_valid_extension(av[1]))
-	{
-		printf("%s", FORMAT);
-		return (false);
-	}
-	if (!validate_file(&av[1]))
-	{
-		printf("%s", MAP);
-		return (false);
-	}
-	return (true);
+	free(tab);
 }
