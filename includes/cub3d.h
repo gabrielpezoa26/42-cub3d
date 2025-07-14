@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 18:22:52 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/14 15:38:58 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/07/14 17:42:02 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ typedef struct s_map
 bool	parse_input(int argc, char **argv);
 bool	is_valid_char(int c);
 bool	is_valid_extension(const char *filename);
-bool	validate_file(char **av);
-bool	parse_textures(t_map *map);
+bool	is_valid_file(char **av);
+bool	parse_textures(t_map *map, int fd);
 bool	parse_map(t_map *map);
 
 /*---------CLEANUP---------*/

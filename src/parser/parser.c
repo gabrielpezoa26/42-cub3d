@@ -6,13 +6,13 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 13:54:07 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/14 15:12:02 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/07/14 17:42:03 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static bool	check_argc(int argc)
+static bool	is_valid_argc(int argc)
 {
 	if (argc == 2)
 		return (true);
@@ -22,7 +22,7 @@ static bool	check_argc(int argc)
 
 bool	parse_input(int ac, char **av)
 {
-	if (!check_argc(ac))
+	if (!is_valid_argc(ac))
 	{
 		printf("%s", INVALID_ARGC);
 		return (false);
@@ -32,7 +32,7 @@ bool	parse_input(int ac, char **av)
 		printf("%s", FORMAT);
 		return (false);
 	}
-	if (!validate_file(&av[1]))
+	if (!is_valid_file(&av[1]))
 	{
 		printf("%s", MAP);
 		return (false);
