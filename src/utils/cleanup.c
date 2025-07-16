@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dteruya <dteruya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 15:10:21 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/14 15:26:29 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/07/16 17:59:01 by dteruya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,11 @@ void	free_array(void **tab, size_t len)
 		i++;
 	}
 	free(tab);
+}
+
+bool	is_wspace(char input)
+{
+	if (input == ' ' || input == '\t')
+		return (true);
+	return (false);
 }

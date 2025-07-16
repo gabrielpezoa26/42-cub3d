@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dteruya <dteruya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 13:54:07 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/14 17:42:03 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/07/16 20:06:23 by dteruya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,22 @@ static bool	is_valid_argc(int argc)
 
 bool	parse_input(int ac, char **av)
 {
+	char	*file_name;
+	t_info	*info;
+
+	info = NULL;
+	file_name = av[1];
 	if (!is_valid_argc(ac))
 	{
 		printf("%s", INVALID_ARGC);
 		return (false);
 	}
-	if (!is_valid_extension(av[1]))
+	if (!is_valid_extension(file_name))
 	{
 		printf("%s", FORMAT);
 		return (false);
 	}
-	if (!is_valid_file(&av[1]))
+	if (!is_valid_file(file_name, info))
 	{
 		printf("%s", MAP);
 		return (false);

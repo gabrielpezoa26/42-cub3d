@@ -3,37 +3,56 @@
 /*                                                        :::      ::::::::   */
 /*   validate_file.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dteruya <dteruya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 00:46:41 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/14 17:42:02 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/07/16 20:11:41 by dteruya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-bool	is_valid_file(char **av)
+static bool is_empty(char *file_name)
 {
+	bool	flag;
+	char	*str;
 	int		fd;
-	t_map	*map;
 
-	fd = open(av[0], O_RDONLY);
-	if (fd == -1)
-		printf("Error opening file\n");
-	map = malloc(sizeof(t_map));
-	if (!map)
+	flag = true;
+	fd = open(file_name, O_RDONLY);
+	if (fd < 0)
+		print_and_exit("Error opening file");
+	str = get_next_line(fd);
+	while (str != NULL)
 	{
-		printf("vishhh\n");
-		return (false);
+		if (!is_only_wspace(str))
+			flag = false;
+		free(str);
+		str = get_next_line(fd);
 	}
-	if (!parse_textures(map, fd))
+	free(str);
+	close(fd);
+	return (flag);
+}
+
+bool	is_valid_file(char *file_name, t_info *info)
+{
+	// t_map	*map;
+
+	if (is_empty(file_name))
 		return (false);
-	// if (!parse_map(map))
-	// 	return (false);
-	// if (!parse_colors(map))
-	// 	return (false);
+	if (!map_before(file_name))
+		return (false);
+	init_info(file_name, info);
+/*	if (!parse_textures(fd))
+		exit = false;
+	if (!parse_map(map))
+		exit = false;
+	if (!parse_colors(map))
+		exit = false;*/
 	return (true);
 }
+
 
 // int	main(void)
 // {

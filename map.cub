@@ -1,7 +1,7 @@
 SO ./assets/so.xpm
 EA ./assets/ea.xpm
 WE ./assets/we.xpm
-NO ./assets/no.xpm
+NO ./assets/nox.xpm
 
 F 32,32,32
 C 0,25,51
