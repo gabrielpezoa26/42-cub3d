@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 15:10:21 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/18 01:03:12 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/07/18 15:34:36 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ void	free_info(t_info *info)
 		free(info->west_texture);
 	if (info->east_texture)
 		free(info->east_texture);
-	if (info->floor_color)
-		free(info->floor_color);
-	if (info->ceiling_color)
-		free(info->ceiling_color);
+	// if (info->floor_color)
+	// 	free(info->floor_color);
+	// if (info->ceiling_color)
+	// 	free(info->ceiling_color);
 }
 
 void	free_array(void **tab, size_t len)

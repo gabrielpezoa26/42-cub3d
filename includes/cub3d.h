@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dteruya <dteruya@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 18:22:52 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/17 20:41:55 by dteruya          ###   ########.fr       */
+/*   Updated: 2025/07/18 15:28:16 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ typedef struct s_info
 	char	*south_texture;
 	char	*west_texture;
 	char	*east_texture;
-	char	*floor_color;
-	char	*ceiling_color;
+	int		floor_color[3];
+	int		ceiling_color[3];
 }	t_info;
 
 typedef struct s_map
@@ -74,7 +74,9 @@ void	init_west(t_info *info, int *i, char *line);
 void	init_north(t_info *info, int *i, char *line);
 
 /*---------------RGB-----------*/
-void	init_rgb(t_info *info, int *i, char *line, char c);
+// void	init_rgb(t_info *info, int *i, char *line, char c);
+void	init_rgb(t_info *info, char *line);
+
 
 
 #endif

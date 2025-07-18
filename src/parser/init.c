@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 20:03:47 by dteruya           #+#    #+#             */
-/*   Updated: 2025/07/18 00:58:36 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/07/18 15:37:03 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	is_ID(t_info *info, char *line, int *i)
 	else if (line[*i] == 'N' && line[*i + 1] == 'O' && line[*i + 2] == ' ')
 		init_north(info, i, line);
 	else if ((line[*i] == 'F' || line[*i] == 'C') && line[*i + 1] == ' ')
-		init_rgb(info, i, line, line[*i]);
+		init_rgb(info, line);
 }
 
 void	init_info(char *file_name, t_info *info)
@@ -33,6 +33,8 @@ void	init_info(char *file_name, t_info *info)
 	int		i;
 
 	info = ft_calloc(1, sizeof(t_info));
+	info->floor_color[0] = -1;
+	info->ceiling_color[0] = -1;
 	fd = open(file_name, O_RDONLY);
 	if (fd < 0)
 		print_and_exit("Error: opening file");
