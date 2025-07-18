@@ -6,7 +6,7 @@
 /*   By: dteruya <dteruya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 13:54:07 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/16 20:06:23 by dteruya          ###   ########.fr       */
+/*   Updated: 2025/07/17 21:06:11 by dteruya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,10 @@ bool	parse_input(int ac, char **av)
 	}
 	if (!is_valid_file(file_name, info))
 	{
+		// free_info(info);
 		printf("%s", MAP);
 		return (false);
 	}
+	// free(info);
 	return (true);
 }

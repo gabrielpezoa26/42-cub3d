@@ -1,10 +1,29 @@
-SO ./assets/so.xpm
-EA ./assets/ea.xpm
-WE ./assets/we.xpm
-NO ./assets/nox.xpm
 
-F 32,32,32
+
+
+
+
+
+
+
+
+
+
+
+
+
+SO ./assets/so.xpm
+
+
+
+EA                      ./assets/ea.xpm
+                    WE                 ./assets/we.xpm  
+
+
+NO ./assets/no.xpm
+
 C 0,25,51
+F  20,30,40
 
 111111
 100101

@@ -24,6 +24,8 @@ SRC = $(SRC_DIR)/main.c \
 		$(PARSER_DIR)/validate_file.c \
 		$(PARSER_DIR)/validate_file_utils.c \
 		$(PARSER_DIR)/init.c \
+		$(PARSER_DIR)/rose_of_winds.c \
+		$(PARSER_DIR)/rgb.c \
 		$(UTILS_DIR)/cleanup.c \
 
 OBJS = $(SRC:%.c=$(OBJ_DIR)/%.o)

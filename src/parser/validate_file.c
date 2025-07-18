@@ -6,7 +6,7 @@
 /*   By: dteruya <dteruya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 00:46:41 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/16 20:11:41 by dteruya          ###   ########.fr       */
+/*   Updated: 2025/07/17 21:05:44 by dteruya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,21 +35,32 @@ static bool is_empty(char *file_name)
 	return (flag);
 }
 
+// static bool	verify_info(t_info *info)
+// {
+// 	if (info->south_texture == NULL)
+// 		return (false);
+// 	if (info->west_texture == NULL)
+// 		return (false);
+// 	if (info->east_texture == NULL)
+// 		return (false);
+// 	if (info->north_texture == NULL)
+// 		return (false);
+// 	if (info->floor_color == NULL)
+// 		return (false);
+// 	if (info->ceiling_color == NULL)
+// 		return (false);
+// 	return (true);
+// }
+
 bool	is_valid_file(char *file_name, t_info *info)
 {
-	// t_map	*map;
-
 	if (is_empty(file_name))
 		return (false);
 	if (!map_before(file_name))
 		return (false);
 	init_info(file_name, info);
-/*	if (!parse_textures(fd))
-		exit = false;
-	if (!parse_map(map))
-		exit = false;
-	if (!parse_colors(map))
-		exit = false;*/
+	// if (!verify_info(info))
+	// 	return (false);
 	return (true);
 }
 

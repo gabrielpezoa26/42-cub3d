@@ -6,7 +6,7 @@
 /*   By: dteruya <dteruya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 18:22:52 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/16 20:09:10 by dteruya          ###   ########.fr       */
+/*   Updated: 2025/07/17 20:41:55 by dteruya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,16 @@ void	init_info(char *file_name, t_info *info);
 
 /*---------CLEANUP---------*/
 void	free_array(void **tab, size_t len);
+void	free_info(t_info *info);
+
+/*---------ROSE--------------*/
+void	init_south(t_info *info, int *i, char *line);
+void	init_east(t_info *info, int *i, char *line);
+void	init_west(t_info *info, int *i, char *line);
+void	init_north(t_info *info, int *i, char *line);
+
+/*---------------RGB-----------*/
+void	init_rgb(t_info *info, int *i, char *line, char c);
+
+
 #endif

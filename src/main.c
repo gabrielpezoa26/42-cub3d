@@ -6,7 +6,7 @@
 /*   By: dteruya <dteruya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 18:22:43 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/16 20:02:24 by dteruya          ###   ########.fr       */
+/*   Updated: 2025/07/17 20:30:04 by dteruya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	main(int ac, char **av)
 	/*
 	MALLOC:
 	-MALLOC nas info do t_info
-	
 	
 	*/
 	return (0);
