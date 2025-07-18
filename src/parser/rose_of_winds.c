@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 15:33:36 by dteruya           #+#    #+#             */
-/*   Updated: 2025/07/18 00:16:10 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/07/18 00:54:44 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	init_south(t_info *info, int *i, char *line)
 		free(value);
 		return ;
 	}
-	printf("DEBUG: value antes malloc: %s\n", value);
+	printf("\nDEBUG: value antes malloc: %s\n", value);
 	info->south_texture = malloc(sizeof(char) * ft_strlen(value));
 	if (!info->south_texture)
 		print_and_exit("Error!");
@@ -56,7 +56,7 @@ void	init_east(t_info *info, int *i, char *line)
 		free(value);
 		return ;
 	}
-	printf("DEBUG: value antes malloc: %s\n", value);
+	printf("\nDEBUG: value antes malloc: %s\n", value);
 	info->east_texture = malloc(sizeof(char) * ft_strlen(value));
 	if (!info->east_texture)
 		print_and_exit("Error!");
@@ -82,7 +82,7 @@ void	init_west(t_info *info, int *i, char *line)
 		free(value);
 		return ;
 	}
-	printf("DEBUG: value antes malloc: %s\n", value);
+	printf("\nDEBUG: value antes malloc: %s\n", value);
 	info->west_texture = malloc(sizeof(char) * ft_strlen(value));
 	if (!info->west_texture)
 		print_and_exit("Error!");
@@ -104,11 +104,11 @@ void	init_north(t_info *info, int *i, char *line)
 	value = ft_substr(line, j, *i - j);
 	if (ft_strncmp(value, "./assets/no.xpm", 15) != 0)
 	{
-		print_and_exit("Errorhdsajlfhjklsdahfjklskldafhjasdfjasldf!");
+		print_and_exit("Error!");
 		free(value);
 		return ;
 	}
-	printf("DEBUG: value antes malloc: %s\n", value);
+	printf("\nDEBUG: value antes malloc: %s\n", value);
 	info->north_texture = malloc(sizeof(char) * ft_strlen(value));
 	if (!info->north_texture)
 		print_and_exit("Error!");

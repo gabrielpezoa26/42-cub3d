@@ -62,6 +62,8 @@ fclean: clean
 SUPP = mlx.supp
 
 val: all
-	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --suppressions=$(SUPP) ./$(NAME)
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --suppressions=$(SUPP) ./$(NAME) map.cub
 
+run: all
+	./$(NAME) map.cub
 re: fclean all
