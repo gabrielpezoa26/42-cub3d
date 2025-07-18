@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 15:18:38 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/18 16:05:55 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/07/18 16:28:02 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static bool	is_valid_number(const char *str)
 	return (true);
 }
 
-static void	validate_and_convert_components(int *colors, char **rgb_values)
+static bool	validate_and_convert(int *colors, char **rgb_values)
 {
 	int	i;
 
@@ -53,63 +53,63 @@ static void	validate_and_convert_components(int *colors, char **rgb_values)
 	while (++i < 3)
 	{
 		if (!is_valid_number(rgb_values[i]))
-		{
-			free_split(rgb_values);
-			print_and_exit("Error!\n");
-		}
+			return (ft_putstr_fd("Error!\n", 2), false);
 		colors[i] = ft_atoi(rgb_values[i]);
 		if (colors[i] < 0 || colors[i] > 255)
-		{
-			free_split(rgb_values);
-			print_and_exit("Error!\n");
-		}
+			return (ft_putstr_fd("Error!\n", 2), false);
 	}
+	return (true);
 }
-static void	parse_and_fill_rgb(int *colors, char *line)
+
+static bool	parse_and_fill_rgb(int *colors, char *line)
 {
 	char	**rgb_values;
 	int		i;
+	bool	is_valid;
 
 	rgb_values = ft_split(line, ',');
 	if (!rgb_values)
-		print_and_exit("Error: Malloc fail\n");
+		return (ft_putstr_fd("Error: Malloc failed.\n", 2), false);
 	i = 0;
 	while (rgb_values[i])
 		i++;
 	if (i != 3)
 	{
 		free_split(rgb_values);
-		print_and_exit("Error!\n");
+		return (ft_putstr_fd("Error!\n", 2), false);
 	}
-	validate_and_convert_components(colors, rgb_values);
+	is_valid = validate_and_convert(colors, rgb_values);
 	free_split(rgb_values);
+	return (is_valid);
 }
 
-
-void	init_rgb(t_info *info, char *line)
+bool	init_rgb(t_info *info, char *line)
 {
 	char	identifier;
 	int		i;
+	bool	flag;
 
 	i = 0;
 	while (line[i] && is_wspace(line[i]))
 		i++;
 	identifier = line[i];
 	i++;
+	flag = true;
 	if (identifier == 'F')
 	{
 		if (info->floor_color[0] != -1)
-			print_and_exit("Error!\n");
-		parse_and_fill_rgb(info->floor_color, &line[i]);
-		printf("DEBUG: F: %d %d %d\n", info->floor_color[0], 
+			return (ft_putstr_fd("Error: Floor color redefined.\n", 2), false);
+		flag = parse_and_fill_rgb(info->floor_color, &line[i]);
+		printf("DEBUG: F color: %d %d %d\n", info->floor_color[0],
 			info->floor_color[1], info->floor_color[2]);
 	}
 	else if (identifier == 'C')
 	{
 		if (info->ceiling_color[0] != -1)
-			print_and_exit("Error!\n");
-		parse_and_fill_rgb(info->ceiling_color, &line[i]);
-		printf("DEBUG: F: %d %d %d\n", info->ceiling_color[0], 
+			return (ft_putstr_fd("Error: Ceiling color redefined.\n", 2), false);
+		flag = parse_and_fill_rgb(info->ceiling_color, &line[i]);
+		printf("DEBUG: C color: %d %d %d\n", info->ceiling_color[0],
 			info->ceiling_color[1], info->ceiling_color[2]);
 	}
+	return (flag);
 }
