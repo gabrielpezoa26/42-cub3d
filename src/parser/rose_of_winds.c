@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rose_of_winds.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dteruya <dteruya@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 15:33:36 by dteruya           #+#    #+#             */
-/*   Updated: 2025/07/17 21:02:24 by dteruya          ###   ########.fr       */
+/*   Updated: 2025/07/18 00:16:10 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ void	init_south(t_info *info, int *i, char *line)
 	info->south_texture = malloc(sizeof(char) * ft_strlen(value));
 	if (!info->south_texture)
 		print_and_exit("Error!");
-	if (!info->south_texture)
-		info->south_texture = value;
+	info->south_texture = value;
 	printf("DEBUG: value malokado:  %s\n", info->south_texture);
 }
 
@@ -61,8 +60,7 @@ void	init_east(t_info *info, int *i, char *line)
 	info->east_texture = malloc(sizeof(char) * ft_strlen(value));
 	if (!info->east_texture)
 		print_and_exit("Error!");
-	if (!info->east_texture)
-		info->east_texture = value;
+	info->east_texture = value;
 	printf("DEBUG: value malokado:  %s\n", info->east_texture);
 }
 
@@ -88,8 +86,7 @@ void	init_west(t_info *info, int *i, char *line)
 	info->west_texture = malloc(sizeof(char) * ft_strlen(value));
 	if (!info->west_texture)
 		print_and_exit("Error!");
-	if (!info->west_texture)
-		info->west_texture = value;
+	info->west_texture = value;
 	printf("DEBUG: value malokado:  %s\n", info->west_texture);
 }
 
@@ -115,7 +112,6 @@ void	init_north(t_info *info, int *i, char *line)
 	info->north_texture = malloc(sizeof(char) * ft_strlen(value));
 	if (!info->north_texture)
 		print_and_exit("Error!");
-	if (!info->north_texture)
-		info->north_texture = value;
+	info->north_texture = value;
 	printf("DEBUG: value malokado:  %s\n", info->north_texture);
 }

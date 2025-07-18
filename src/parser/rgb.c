@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rgb.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dteruya <dteruya@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 15:59:52 by dteruya           #+#    #+#             */
-/*   Updated: 2025/07/17 20:24:38 by dteruya          ###   ########.fr       */
+/*   Updated: 2025/07/18 00:20:43 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,11 +129,11 @@ void	init_rgb(t_info *info, int *i, char *line, char c)
 	if (c == 'F')
 	{
 		init_floor(info, i, line);
-		printf("%s\n", info->floor_color);
+		printf("\nDEBUG: F color:  %s\n", info->floor_color);
 	}
 	else if (c == 'C')
 	{
 		init_ceiling(info, i, line);
-		printf("%s\n", info->ceiling_color);
+		printf("\nDEBUG: C color: %s\n", info->ceiling_color);
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_file_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dteruya <dteruya@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 14:50:23 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/17 15:56:31 by dteruya          ###   ########.fr       */
+/*   Updated: 2025/07/18 00:08:51 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 //ve se o arquivo existe msm, ve a extensao .xpm etc. dps se tiver tudo certo,
 // passa e joga pros struct
-bool parse_textures(t_map *map, int fd)
-{
-	char *line;
-	int	i;
+// bool parse_textures(t_map *map, int fd)
+// {
+// 	char *line;
+// 	int	i;
 
-	(void)map;
-	line = get_next_line(fd);
-	i = 0;
-	// while(i < ft_strlen(line))
-	// {
+// 	(void)map;
+// 	line = get_next_line(fd);
+// 	i = 0;
+// 	// while(i < ft_strlen(line))
+// 	// {
 		
-	// 	i++;
-	// }
-	printf("DEBUG:  %s\n", line);
-	return (true);
-}
+// 	// 	i++;
+// 	// }
+// 	printf("DEBUG:  %s\n", line);
+// 	return (true);
+// }
 
 static bool	mango_loko(char *line)
 {
