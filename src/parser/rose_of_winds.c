@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 15:33:36 by dteruya           #+#    #+#             */
-/*   Updated: 2025/07/18 01:40:52 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/07/18 19:58:22 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	init_south(t_info *info, int *i, char *line)
 		return ;
 	}
 	printf("\nDEBUG: value antes malloc: %s\n", value);
-	// info->south_texture = malloc(sizeof(char) * ft_strlen(value));
 	info->south_texture = value;
 	if (!info->south_texture)
 		print_and_exit("Error!");
@@ -51,14 +50,13 @@ void	init_east(t_info *info, int *i, char *line)
 	while (!is_wspace(line[*i]) && line[*i] != '\n')
 		(*i)++;
 	value = ft_substr(line, j, *i - j);
-	if (ft_strncmp(value, "./assets/ea.xpm", 15) != 0)  //leak de 15 bytes
+	if (ft_strncmp(value, "./assets/ea.xpm", 15) != 0)
 	{
 		print_and_exit("Error!");
 		free(value);
 		return ;
 	}
 	printf("\nDEBUG: value antes malloc: %s\n", value);
-	// info->east_texture = malloc(sizeof(char) * ft_strlen(value));
 	info->east_texture = value;
 	if (!info->east_texture)
 		print_and_exit("Error!");
@@ -85,7 +83,6 @@ void	init_west(t_info *info, int *i, char *line)
 		return ;
 	}
 	printf("\nDEBUG: value antes malloc: %s\n", value);
-	// info->west_texture = malloc(sizeof(char) * ft_strlen(value));
 	info->west_texture = value;
 	if (!info->west_texture)
 		print_and_exit("Error!");
@@ -112,7 +109,6 @@ void	init_north(t_info *info, int *i, char *line)
 		return ;
 	}
 	printf("\nDEBUG: value antes malloc: %s\n", value);
-	// info->north_texture = malloc(sizeof(char) * ft_strlen(value));
 	info->north_texture = value;
 	if (!info->north_texture)
 		print_and_exit("Error!");

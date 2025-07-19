@@ -6,13 +6,13 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 20:03:47 by dteruya           #+#    #+#             */
-/*   Updated: 2025/07/18 15:37:03 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/07/18 19:54:37 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static void	is_ID(t_info *info, char *line, int *i)
+static void	is_identifier(t_info *info, char *line, int *i)
 {
 	if (line[*i] == 'S' && line[*i + 1] == 'O' && line[*i + 2] == ' ')
 		init_south(info, i, line);
@@ -44,7 +44,7 @@ void	init_info(char *file_name, t_info *info)
 		i = 0;
 		while (is_wspace(line[i]))
 			i++;
-		is_ID(info, line, &i);
+		is_identifier(info, line, &i);
 		free(line);
 		line = get_next_line(fd);
 	}

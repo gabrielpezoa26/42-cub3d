@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 18:22:52 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/18 16:22:52 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/07/18 21:44:56 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,14 @@ bool	parse_textures(t_map *map, int fd);
 bool	parse_map(t_map *map);
 
 bool	map_before(char *file_name);
-void	print_and_exit(char *str); //tirar depois Error
-/*utils*/
+void	print_and_exit(char *str);
+
+/*---------UTILS---------*/
 bool	is_wspace(char input);
-bool is_only_wspace(char *line);
+bool	is_only_wspace(char *line);
 
-
-/*INIT*/
+/*---------INIT---------*/
 void	init_info(char *file_name, t_info *info);
-
 
 /*---------CLEANUP---------*/
 void	free_array(void **tab, size_t len);
@@ -75,7 +74,5 @@ void	init_north(t_info *info, int *i, char *line);
 
 /*---------------RGB-----------*/
 bool	init_rgb(t_info *info, char *line);
-
-
 
 #endif

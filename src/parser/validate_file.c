@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   validate_file.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dteruya <dteruya@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 00:46:41 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/17 21:05:44 by dteruya          ###   ########.fr       */
+/*   Updated: 2025/07/18 21:45:12 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static bool is_empty(char *file_name)
+static	bool is_empty(char *file_name)
 {
 	bool	flag;
 	char	*str;
@@ -63,16 +63,3 @@ bool	is_valid_file(char *file_name, t_info *info)
 	// 	return (false);
 	return (true);
 }
-
-
-// int	main(void)
-// {
-// 	int	fd;
-
-// 	fd = open("test.txt", O_RDONLY);
-// 	printf("%s", get_next_line(fd));
-// 	printf("%s", get_next_line(fd));
-// 	printf("%s", get_next_line(fd));
-// 	printf("%s", get_next_line(fd));
-// 	printf("%s", get_next_line(fd));
-// }

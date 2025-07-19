@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 15:18:38 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/18 16:28:02 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/07/18 19:57:41 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ bool	init_rgb(t_info *info, char *line)
 	if (identifier == 'F')
 	{
 		if (info->floor_color[0] != -1)
-			return (ft_putstr_fd("Error: Floor color redefined.\n", 2), false);
+			return (ft_putstr_fd("Error!\n", 2), false);
 		flag = parse_and_fill_rgb(info->floor_color, &line[i]);
 		printf("DEBUG: F color: %d %d %d\n", info->floor_color[0],
 			info->floor_color[1], info->floor_color[2]);
@@ -106,7 +106,7 @@ bool	init_rgb(t_info *info, char *line)
 	else if (identifier == 'C')
 	{
 		if (info->ceiling_color[0] != -1)
-			return (ft_putstr_fd("Error: Ceiling color redefined.\n", 2), false);
+			return (ft_putstr_fd("Error!\n", 2), false);
 		flag = parse_and_fill_rgb(info->ceiling_color, &line[i]);
 		printf("DEBUG: C color: %d %d %d\n", info->ceiling_color[0],
 			info->ceiling_color[1], info->ceiling_color[2]);
