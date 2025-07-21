@@ -35,18 +35,18 @@ static	bool is_empty(char *file_name)
 	return (flag);
 }
 
-static bool	verify_info(t_info *info)
+static bool	verify_info(t_info **info)
 {
-	if (!info->south_texture)
+	if (!(*info)->south_texture)
 	{
 		printf("DEBUG: dasdsadsa\n");
 		return (false);
 	}
-	if (!info->west_texture)
+	if (!(*info)->west_texture)
 		return (false);
-	if (!info->east_texture)
+	if (!(*info)->east_texture)
 		return (false);
-	if (!info->north_texture)
+	if (!(*info)->north_texture)
 		return (false);
 	// if (*info->floor_color == -1)
 	// {
@@ -61,7 +61,7 @@ static bool	verify_info(t_info *info)
 	return (true);
 }
 
-bool	is_valid_file(char *file_name, t_info *info)
+bool	is_valid_file(char *file_name, t_info **info)
 {
 	if (is_empty(file_name))
 		return (false);

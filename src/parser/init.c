@@ -36,14 +36,14 @@ static void inittttt(t_info *info)
 	info->ceiling_color[0] = -1;
 }
 
-void	init_info(char *file_name, t_info *info)
+void	init_info(char *file_name, t_info **info)
 {
 	int		fd;
 	char	*line;
 	int		i;
 
-	info = ft_calloc(1, sizeof(t_info));
-	inittttt(info);
+	*info = ft_calloc(1, sizeof(t_info));
+	inittttt(*info);
 	fd = open(file_name, O_RDONLY);
 	if (fd < 0)
 		print_and_exit("Error: opening file");
@@ -53,11 +53,11 @@ void	init_info(char *file_name, t_info *info)
 		i = 0;
 		while (is_wspace(line[i]))
 			i++;
-		is_identifier(info, line, &i);
+		is_identifier(*info, line, &i);
 		free(line);
 		line = get_next_line(fd);
 	}
-	free_info(info);
-	free(info);
+	free_info(*info);
+	// free(*info);
 	close(fd);
 }

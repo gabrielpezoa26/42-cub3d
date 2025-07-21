@@ -37,7 +37,7 @@ bool	parse_input(int ac, char **av)
 		printf("%s", FORMAT);
 		return (false);
 	}
-	if (!is_valid_file(file_name, info))
+	if (!is_valid_file(file_name, &info))
 	{
 		// free_info(info);
 		printf("%s", MAP);

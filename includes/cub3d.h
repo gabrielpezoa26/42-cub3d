@@ -48,7 +48,7 @@ typedef struct s_map
 bool	parse_input(int argc, char **argv);
 bool	is_valid_char(int c);
 bool	is_valid_extension(const char *filename);
-bool	is_valid_file(char *av, t_info *info);
+bool	is_valid_file(char *av, t_info **info);
 bool	parse_textures(t_map *map, int fd);
 bool	parse_map(t_map *map);
 
@@ -60,7 +60,7 @@ bool	is_wspace(char input);
 bool	is_only_wspace(char *line);
 
 /*---------INIT---------*/
-void	init_info(char *file_name, t_info *info);
+void	init_info(char *file_name, t_info **info);
 
 /*---------CLEANUP---------*/
 void	free_array(void **tab, size_t len);
