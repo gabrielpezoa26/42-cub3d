@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 20:03:47 by dteruya           #+#    #+#             */
-/*   Updated: 2025/07/18 19:54:37 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/07/21 13:34:11 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,16 @@ static void	is_identifier(t_info *info, char *line, int *i)
 		init_rgb(info, line);
 }
 
+static void inittttt(t_info *info)
+{
+	info->east_texture = NULL;
+	info->west_texture = NULL;
+	info->south_texture = NULL;
+	info->north_texture = NULL;
+	info->floor_color[0] = -1;
+	info->ceiling_color[0] = -1;
+}
+
 void	init_info(char *file_name, t_info *info)
 {
 	int		fd;
@@ -33,8 +43,7 @@ void	init_info(char *file_name, t_info *info)
 	int		i;
 
 	info = ft_calloc(1, sizeof(t_info));
-	info->floor_color[0] = -1;
-	info->ceiling_color[0] = -1;
+	inittttt(info);
 	fd = open(file_name, O_RDONLY);
 	if (fd < 0)
 		print_and_exit("Error: opening file");

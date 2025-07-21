@@ -25,7 +25,6 @@ SRC = $(SRC_DIR)/main.c \
 		$(PARSER_DIR)/validate_file_utils.c \
 		$(PARSER_DIR)/init.c \
 		$(PARSER_DIR)/rose_of_winds.c \
-		$(PARSER_DIR)/rgb.c \
 		$(PARSER_DIR)/rgb2.c \
 		$(UTILS_DIR)/cleanup.c \
 
@@ -67,4 +66,5 @@ val: all
 
 run: all
 	./$(NAME) map.cub
+
 re: fclean all

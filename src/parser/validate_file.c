@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 00:46:41 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/18 21:45:12 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/07/21 13:42:53 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,22 +35,31 @@ static	bool is_empty(char *file_name)
 	return (flag);
 }
 
-// static bool	verify_info(t_info *info)
-// {
-// 	if (info->south_texture == NULL)
-// 		return (false);
-// 	if (info->west_texture == NULL)
-// 		return (false);
-// 	if (info->east_texture == NULL)
-// 		return (false);
-// 	if (info->north_texture == NULL)
-// 		return (false);
-// 	if (info->floor_color == NULL)
-// 		return (false);
-// 	if (info->ceiling_color == NULL)
-// 		return (false);
-// 	return (true);
-// }
+static bool	verify_info(t_info *info)
+{
+	if (!info->south_texture)
+	{
+		printf("DEBUG: dasdsadsa\n");
+		return (false);
+	}
+	if (!info->west_texture)
+		return (false);
+	if (!info->east_texture)
+		return (false);
+	if (!info->north_texture)
+		return (false);
+	// if (*info->floor_color == -1)
+	// {
+	// 	printf("floor color deu ruim \n");
+	// 	return (false);
+	// }
+	// if (*info->ceiling_color == -1)
+	// {
+	// 	printf("ceiling color deu ruim \n");
+	// 	return (false);
+	// }
+	return (true);
+}
 
 bool	is_valid_file(char *file_name, t_info *info)
 {
@@ -59,7 +68,10 @@ bool	is_valid_file(char *file_name, t_info *info)
 	if (!map_before(file_name))
 		return (false);
 	init_info(file_name, info);
-	// if (!verify_info(info))
-	// 	return (false);
+	if (!verify_info(info)) //ta dando b.o aqui rs
+	{
+		printf("DEBUG: deu ruimmm verify info\n");
+		return (false);
+	}
 	return (true);
 }

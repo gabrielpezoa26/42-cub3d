@@ -1,2 +1,11 @@
 mudar rgb de void pra bool, pra poder dar free
 se o codigo de rgb for invalido, no lugar de so print_exit
+
+
+
+arrumar segfault no verify_info, tbm ta retornando invalido quando o mapa eh 
+valido na vdd
+
+
+arrumar leak quando tem duas chaves duplicadas, e falta uma outra. 
+    ex: dois "EA" mas n tem "SO"
