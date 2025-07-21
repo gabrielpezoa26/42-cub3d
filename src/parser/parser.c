@@ -6,7 +6,7 @@
 /*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 13:54:07 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/21 18:59:37 by diego            ###   ########.fr       */
+/*   Updated: 2025/07/21 19:27:01 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ bool	parse_input(int ac, char **av)
 	}
 	if (!is_valid_file(file_name, &info))
 	{
-		// free_info(info);
+		free_info(info);
+		free(info);
 		printf("%s", MAP);
 		return (false);
 	}
