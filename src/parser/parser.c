@@ -6,7 +6,7 @@
 /*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 13:54:07 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/21 19:27:01 by diego            ###   ########.fr       */
+/*   Updated: 2025/07/22 18:50:17 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,35 +16,22 @@ static bool	is_valid_argc(int argc)
 {
 	if (argc == 2)
 		return (true);
-	else
-		return (false);
+	printf("%s", INVALID_ARGC);
+	return (false);
 }
 
-bool	parse_input(int ac, char **av)
+bool	parse_input(int ac, char **av, t_info **info, t_map **map)
 {
-	char	*file_name;
-	t_info	*info;
-
-	info = NULL;
-	file_name = av[1];
 	if (!is_valid_argc(ac))
-	{
-		printf("%s", INVALID_ARGC);
 		return (false);
-	}
-	if (!is_valid_extension(file_name))
+	if (!is_valid_extension(av[1]))
 	{
 		printf("%s", FORMAT);
 		return (false);
 	}
-	if (!is_valid_file(file_name, &info))
-	{
-		free_info(info);
-		free(info);
-		printf("%s", MAP);
+	if (!is_valid_file(av[1], info))
 		return (false);
-	}
-	free_info(info);
-	free(info);
+	if (!is_valid_map(av[1], map))
+		return (false);
 	return (true);
 }

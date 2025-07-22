@@ -16,6 +16,9 @@ DEPS = ../includes/cub3d.h
 
 SRC_DIR = src
 PARSER_DIR = src/parser
+RGB_DIR = src/rgb
+MAP_DIR = src/map
+CARDINAL_DIR = src/cardinal_points
 UTILS_DIR = src/utils
 
 SRC = $(SRC_DIR)/main.c \
@@ -24,8 +27,10 @@ SRC = $(SRC_DIR)/main.c \
 		$(PARSER_DIR)/validate_file.c \
 		$(PARSER_DIR)/validate_file_utils.c \
 		$(PARSER_DIR)/init.c \
-		$(PARSER_DIR)/rose_of_winds.c \
-		$(PARSER_DIR)/rgb2.c \
+		$(CARDINAL_DIR)/rose_of_winds.c \
+		$(RGB_DIR)/rgb.c \
+		$(MAP_DIR)/map.c \
+		$(MAP_DIR)/matrix.c \
 		$(UTILS_DIR)/cleanup.c \
 
 OBJS = $(SRC:%.c=$(OBJ_DIR)/%.o)

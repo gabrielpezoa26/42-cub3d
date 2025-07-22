@@ -1,0 +1,32 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SO ./assets/so.xpm
+
+
+
+EA ./assets/ea.xpm
+WE ./assets/we.xpm
+
+
+C 0,25,100
+NO ./assets/no.xpm
+
+F  20,30,30
+
+111111
+100101
+101001
+1100N1
+111111

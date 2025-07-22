@@ -6,13 +6,13 @@
 /*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 00:46:41 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/21 18:59:42 by diego            ###   ########.fr       */
+/*   Updated: 2025/07/22 14:57:53 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static	bool is_empty(char *file_name)
+static	bool is_empty_file(char *file_name)
 {
 	bool	flag;
 	char	*str;
@@ -48,29 +48,19 @@ static bool	verify_info(t_info **info)
 		return (false);
 	if (!(*info)->north_texture)
 		return (false);
-	// if (*info->floor_color == -1)
-	// {
-	// 	printf("floor color deu ruim \n");
-	// 	return (false);
-	// }
-	// if (*info->ceiling_color == -1)
-	// {
-	// 	printf("ceiling color deu ruim \n");
-	// 	return (false);
-	// }
 	return (true);
 }
 
 bool	is_valid_file(char *file_name, t_info **info)
 {
-	if (is_empty(file_name))
+	if (is_empty_file(file_name))
 		return (false);
 	if (!map_before(file_name))
 		return (false);
 	init_info(file_name, info);
-	if (!verify_info(info)) //ta dando b.o aqui rs
+	if (!verify_info(info))
 	{
-		printf("DEBUG: deu ruimmm verify info\n");
+		printf("%s", STRUCT);
 		return (false);
 	}
 	return (true);

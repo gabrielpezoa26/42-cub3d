@@ -6,7 +6,7 @@
 /*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 15:10:21 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/21 18:58:03 by diego            ###   ########.fr       */
+/*   Updated: 2025/07/22 19:10:01 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,31 @@ void	free_info(t_info *info)
 		free(info->west_texture);
 	if (info->east_texture)
 		free(info->east_texture);
-	// if (info->floor_color)
-	// 	free(info->floor_color);
-	// if (info->ceiling_color)
-	// 	free(info->ceiling_color);
+	free(info);
+}
+
+static void	free_matrix(int **matrix, int height)
+{
+	int	i;
+
+	if (matrix == NULL)
+		return ;
+	i = 0;
+	while (i < height)
+	{
+		free(matrix[i]);
+		i++;
+	}
+	free(matrix);
+}
+
+void	free_map(t_map *map)
+{
+	if (map->cols_amount > map->rows_amount)
+		free_matrix(map->matrix, map->cols_amount);
+	else
+		free_matrix(map->matrix, map->rows_amount);
+	free(map);
 }
 
 void	free_array(void **tab, size_t len)

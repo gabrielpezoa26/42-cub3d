@@ -7,6 +7,9 @@ Arrumados:
 valido na vdd
 -arrumar leak quando tem duas chaves duplicadas, e falta uma outra. 
     ex: dois "EA" mas n tem "SO"
+- fiz o inicio da parte da matrix, estou alocando, agora tem que preencher, com a matriz preenchida a gnt faz as verificações:
+- se é pequeno, se tem S ou N ou W ou E
+- acredito eu que todos os leaks já estão certos, fiz malloc e já arrumei os free
 }
 
 Temos que
@@ -14,4 +17,5 @@ Temos que
     -acho que era bom a gnete colocar o t_info na main, o parse_input ta com 25 linhas ja
     -verificar os numeros do mapa para ver se é valido
     -se der certo, fazer o malloc
+	-preencher a matriz
 }
