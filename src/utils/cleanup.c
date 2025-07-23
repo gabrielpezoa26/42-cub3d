@@ -6,13 +6,13 @@
 /*   By: dteruya <dteruya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 15:10:21 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/23 18:57:19 by dteruya          ###   ########.fr       */
+/*   Updated: 2025/07/23 19:58:51 by dteruya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	free_info(t_maṕ *info)
+void	free_info(t_info *info)
 {
 	if (info->north_texture)
 		free(info->north_texture);

@@ -6,13 +6,13 @@
 /*   By: dteruya <dteruya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 20:03:47 by dteruya           #+#    #+#             */
-/*   Updated: 2025/07/23 18:57:19 by dteruya          ###   ########.fr       */
+/*   Updated: 2025/07/23 19:57:52 by dteruya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static void	is_identifier(t_maṕ *info, char *line, int *i)
+static void	is_identifier(t_info *info, char *line, int *i)
 {
 	if (line[*i] == 'S' && line[*i + 1] == 'O' && line[*i + 2] == ' ')
 		init_south(info, i, line);
@@ -26,7 +26,7 @@ static void	is_identifier(t_maṕ *info, char *line, int *i)
 		init_rgb(info, line);
 }
 
-static void inittttt(t_maṕ *info)
+static void inittttt(t_info *info)
 {
 	info->east_texture = NULL;
 	info->west_texture = NULL;
@@ -36,13 +36,13 @@ static void inittttt(t_maṕ *info)
 	info->ceiling_color[0] = -1;
 }
 
-void	init_info(char *file_name, t_maṕ **info)
+void	init_info(char *file_name, t_info **info)
 {
 	int		fd;
 	char	*line;
 	int		i;
 
-	*info = ft_calloc(1, sizeof(t_maṕ));
+	*info = ft_calloc(1, sizeof(t_info));
 	inittttt(*info);
 	fd = open(file_name, O_RDONLY);
 	if (fd < 0)

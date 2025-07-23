@@ -6,7 +6,7 @@
 /*   By: dteruya <dteruya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 18:22:52 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/23 18:57:19 by dteruya          ###   ########.fr       */
+/*   Updated: 2025/07/23 20:34:11 by dteruya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,16 @@
 # define FORMAT "Invalid format. Correct format:\n./cub3D file.cub\n"
 # define STRUCT "Invalid struct!!\n"
 
+# define WALL_VALUE 1
+# define EMPTY_VALUE 0
+# define VISITED_VALUE 9
+
+typedef struct s_point
+{
+	int	x;
+	int	y;
+}	t_point;
+
 typedef struct s_info
 {
 	char	*north_texture;
@@ -36,26 +46,21 @@ typedef struct s_info
 	char	*east_texture;
 	int		floor_color[3];
 	int		ceiling_color[3];
-}	t_maṕ;
-
-typedef struct  s_point
-{
-	int           x;
-	int           y;
-}               t_point;
+}	t_info;
 
 typedef struct s_map
 {
 	int		rows_amount;
 	int		cols_amount;
 	int		**matrix;
+	t_point	*pov;
 }	t_map;
 
 /*---------PARSER---------*/
-bool	parse_input(int ac, char **av, t_maṕ **info, t_map **map);
+bool	parse_input(int ac, char **av, t_info **info, t_map **map);
 bool	is_valid_char(int c);
 bool	is_valid_extension(const char *filename);
-bool	is_valid_file(char *av, t_maṕ **info);
+bool	is_valid_file(char *av, t_info **info);
 bool	parse_textures(t_map *map, int fd);
 bool	parse_map(t_map *map);
 
@@ -67,21 +72,21 @@ bool	is_wspace(char input);
 bool	is_only_wspace(char *line);
 
 /*---------INIT---------*/
-void	init_info(char *file_name, t_maṕ **info);
+void	init_info(char *file_name, t_info **info);
 
 /*---------CLEANUP---------*/
 void	free_array(void **tab, size_t len);
-void	free_info(t_maṕ *info);
+void	free_info(t_info *info);
 void	free_map(t_map *map);
 
 /*---------ROSE--------------*/
-void	init_south(t_maṕ *info, int *i, char *line);
-void	init_east(t_maṕ *info, int *i, char *line);
-void	init_west(t_maṕ *info, int *i, char *line);
-void	init_north(t_maṕ *info, int *i, char *line);
+void	init_south(t_info *info, int *i, char *line);
+void	init_east(t_info *info, int *i, char *line);
+void	init_west(t_info *info, int *i, char *line);
+void	init_north(t_info *info, int *i, char *line);
 
 /*---------------RGB-----------*/
-bool	init_rgb(t_maṕ *info, char *line);
+bool	init_rgb(t_info *info, char *line);
 
 /*---------MAP-----------*/
 bool	is_valid_map(char *file_name, t_map **map);

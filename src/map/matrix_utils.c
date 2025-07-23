@@ -6,7 +6,7 @@
 /*   By: dteruya <dteruya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 22:27:10 by diego             #+#    #+#             */
-/*   Updated: 2025/07/23 18:39:42 by dteruya          ###   ########.fr       */
+/*   Updated: 2025/07/23 20:46:49 by dteruya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,11 @@ static void	insert_the_values(char *line, t_map *map, int i)
 		else
 		{
 			tmp = ft_strdup(dg_strcmp(line[j]));
+			if (ft_strcmp(tmp, "78") == 0)
+			{
+				map->pov->x = j;
+				map->pov->y = i;
+			}
 			map->matrix[i][j] = ft_atoi(tmp);
 			free(tmp);
 		}
