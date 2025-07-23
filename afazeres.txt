@@ -17,8 +17,14 @@ Temos que
     -acho que era bom a gnete colocar o t_info na main, o parse_input ta com 25 linhas ja
     -verificar os numeros do mapa para ver se é valido
     -se der certo, fazer o malloc
-	-preencher a matriz
+
 
 
 	Agora que está mallocado, temos que ver se é valido o mapa ou não
 }
+
+
+parse matrix
+    ver se tem 1 spawn   OK
+    ver se ta fechado
+    cprrer pro abraço

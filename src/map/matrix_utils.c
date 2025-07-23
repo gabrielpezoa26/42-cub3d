@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dteruya <dteruya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 22:27:10 by diego             #+#    #+#             */
-/*   Updated: 2025/07/22 23:18:59 by diego            ###   ########.fr       */
+/*   Updated: 2025/07/23 18:39:42 by dteruya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,24 @@
 
 static char	*dg_strcmp(char c)
 {
-	if (ft_strcmp(&c, "0") == 0)
+	char	tmp[2];
+
+	tmp[0] = c;
+	tmp[1] = '\0';
+	if (ft_strcmp(tmp, "0") == 0)
 		return ("0");
-	else if (ft_strcmp(&c, "1") == 0)
+	else if (ft_strcmp(tmp, "1") == 0)
 		return ("1");
-	else if (ft_strcmp(&c, "N") == 0)
+	else if (ft_strcmp(tmp, "N") == 0)
 		return ("78");
-	else if (ft_strcmp(&c, "S") == 0)
+	else if (ft_strcmp(tmp, "S") == 0)
 		return ("83");
-	else if (ft_strcmp(&c, "W") == 0)
+	else if (ft_strcmp(tmp, "W") == 0)
 		return ("87");
-	else if (ft_strcmp(&c, "E") == 0)
+	else if (ft_strcmp(tmp, "E") == 0)
 		return ("69");
 	else
-		return ("\0");
+		return ("2");
 }
 
 static void	insert_the_values(char *line, t_map *map, int i)
@@ -36,11 +40,16 @@ static void	insert_the_values(char *line, t_map *map, int i)
 	char	*tmp;
 
 	j = 0;
-	while (line[j] != '\n' && line[j] != '\0' && j < map->cols_amount)
+	while (j < map->cols_amount)
 	{
-		tmp = ft_strdup(dg_strcmp(line[j]));
-		map->matrix[i][j] = atoi(tmp);
-		free(tmp);
+		if (j >= (int)ft_strlen(line))
+			map->matrix[i][j] = 2;
+		else
+		{
+			tmp = ft_strdup(dg_strcmp(line[j]));
+			map->matrix[i][j] = ft_atoi(tmp);
+			free(tmp);
+		}
 		j++;
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dteruya <dteruya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 18:22:52 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/22 22:39:06 by diego            ###   ########.fr       */
+/*   Updated: 2025/07/23 18:45:06 by dteruya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,12 @@ typedef struct s_info
 	int		floor_color[3];
 	int		ceiling_color[3];
 }	t_info;
+
+typedef struct  s_point
+{
+	int           x;
+	int           y;
+}               t_point;
 
 typedef struct s_map
 {
