@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rgb2.c                                             :+:      :+:    :+:   */
+/*   rgb.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dteruya <dteruya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 15:18:38 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/18 19:57:41 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/07/23 18:57:19 by dteruya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ static bool	parse_and_fill_rgb(int *colors, char *line)
 	return (is_valid);
 }
 
-bool	init_rgb(t_info *info, char *line)
+bool	init_rgb(t_maṕ *info, char *line)
 {
 	char	identifier;
 	int		i;

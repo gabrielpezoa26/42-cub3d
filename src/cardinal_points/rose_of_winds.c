@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   rose_of_winds.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dteruya <dteruya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 15:33:36 by dteruya           #+#    #+#             */
-/*   Updated: 2025/07/21 19:30:43 by diego            ###   ########.fr       */
+/*   Updated: 2025/07/23 18:57:19 by dteruya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	init_south(t_info *info, int *i, char *line)
+void	init_south(t_maṕ *info, int *i, char *line)
 {
 	int		j;
 	char	*value;
@@ -40,7 +40,7 @@ void	init_south(t_info *info, int *i, char *line)
 	printf("DEBUG: value malokado:  %s\n", info->south_texture);
 }
 
-void	init_east(t_info *info, int *i, char *line)
+void	init_east(t_maṕ *info, int *i, char *line)
 {
 	int		j;
 	char	*value;
@@ -68,7 +68,7 @@ void	init_east(t_info *info, int *i, char *line)
 	printf("DEBUG: value malokado:  %s\n", info->east_texture);
 }
 
-void	init_west(t_info *info, int *i, char *line)
+void	init_west(t_maṕ *info, int *i, char *line)
 {
 	int		j;
 	char	*value;
@@ -96,7 +96,7 @@ void	init_west(t_info *info, int *i, char *line)
 	printf("DEBUG: value malokado:  %s\n", info->west_texture);
 }
 
-void	init_north(t_info *info, int *i, char *line)
+void	init_north(t_maṕ *info, int *i, char *line)
 {
 	int		j;
 	char	*value;

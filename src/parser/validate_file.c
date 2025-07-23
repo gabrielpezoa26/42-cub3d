@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_file.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dteruya <dteruya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 00:46:41 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/22 14:57:53 by diego            ###   ########.fr       */
+/*   Updated: 2025/07/23 18:57:19 by dteruya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static	bool is_empty_file(char *file_name)
 	return (flag);
 }
 
-static bool	verify_info(t_info **info)
+static bool	verify_info(t_maṕ **info)
 {
 	if (!(*info)->south_texture)
 	{
@@ -51,7 +51,7 @@ static bool	verify_info(t_info **info)
 	return (true);
 }
 
-bool	is_valid_file(char *file_name, t_info **info)
+bool	is_valid_file(char *file_name, t_maṕ **info)
 {
 	if (is_empty_file(file_name))
 		return (false);

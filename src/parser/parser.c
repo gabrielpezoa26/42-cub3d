@@ -6,7 +6,7 @@
 /*   By: dteruya <dteruya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 13:54:07 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/23 16:20:02 by dteruya          ###   ########.fr       */
+/*   Updated: 2025/07/23 18:57:19 by dteruya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static bool	is_valid_argc(int argc)
 	return (false);
 }
 
-bool	parse_input(int ac, char **av, t_info **info, t_map **map)
+bool	parse_input(int ac, char **av, t_maṕ **info, t_map **map)
 {
 	if (!is_valid_argc(ac))
 		return (false);
