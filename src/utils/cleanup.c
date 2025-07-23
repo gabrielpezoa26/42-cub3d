@@ -6,7 +6,7 @@
 /*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 15:10:21 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/22 19:10:01 by diego            ###   ########.fr       */
+/*   Updated: 2025/07/22 23:28:37 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,7 @@ static void	free_matrix(int **matrix, int height)
 
 void	free_map(t_map *map)
 {
-	if (map->cols_amount > map->rows_amount)
-		free_matrix(map->matrix, map->cols_amount);
-	else
+	if (map->matrix)
 		free_matrix(map->matrix, map->rows_amount);
 	free(map);
 }

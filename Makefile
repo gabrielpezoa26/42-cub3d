@@ -31,6 +31,7 @@ SRC = $(SRC_DIR)/main.c \
 		$(RGB_DIR)/rgb.c \
 		$(MAP_DIR)/map.c \
 		$(MAP_DIR)/matrix.c \
+		$(MAP_DIR)/matrix_utils.c \
 		$(UTILS_DIR)/cleanup.c \
 
 OBJS = $(SRC:%.c=$(OBJ_DIR)/%.o)

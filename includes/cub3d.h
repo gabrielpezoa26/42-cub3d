@@ -6,7 +6,7 @@
 /*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 18:22:52 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/22 19:09:11 by diego            ###   ########.fr       */
+/*   Updated: 2025/07/22 22:39:06 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ bool	init_rgb(t_info *info, char *line);
 
 /*---------MAP-----------*/
 bool	is_valid_map(char *file_name, t_map **map);
+void	init_matrix(char *file_name, t_map *map);
 void	fill_the_matrix(char *file_name, t_map *map);
 
 #endif

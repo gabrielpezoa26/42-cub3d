@@ -6,7 +6,7 @@
 /*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:57:21 by diego             #+#    #+#             */
-/*   Updated: 2025/07/22 19:14:50 by diego            ###   ########.fr       */
+/*   Updated: 2025/07/22 23:38:46 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@ static void	ft_malloc(t_map *map)
 	int	i;
 
 	i = 0;
-	map->matrix = (int **)malloc(sizeof(int *) * (map->cols_amount));
+	map->matrix = ft_calloc(1, sizeof(int *) * (map->rows_amount));
 	if (map->matrix == NULL)
 	{
 		perror("Memory allocation failed for matrix");
 		exit(EXIT_FAILURE);
 	}
-	while (i < map->cols_amount)
+	while (i < map->rows_amount)
 	{
-		map->matrix[i] = (int *)malloc(sizeof(int) * (map->rows_amount));
+		map->matrix[i] = ft_calloc(1, sizeof(int) * (map->cols_amount));
 		if (map->matrix[i] == NULL)
 		{
 			perror("Memory allocation failed for matrix");
@@ -109,7 +109,7 @@ void	print_matrix(int **matrix, int cols, int rows)
 }
 
 
-void	fill_the_matrix(char *file_name, t_map *map)
+void	init_matrix(char *file_name, t_map *map)
 {
 	map->cols_amount = count_width(&map->rows_amount, file_name);
 	printf("%d\n", map->cols_amount);
@@ -118,5 +118,6 @@ void	fill_the_matrix(char *file_name, t_map *map)
 	/*
 	kkkkkkkkk tem que preencher a matriz
 	*/
+	fill_the_matrix(file_name, map);
 	print_matrix(map->matrix, map->cols_amount, map->rows_amount);
 }

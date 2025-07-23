@@ -6,7 +6,7 @@
 /*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 14:31:37 by diego             #+#    #+#             */
-/*   Updated: 2025/07/22 18:55:22 by diego            ###   ########.fr       */
+/*   Updated: 2025/07/22 22:28:07 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ bool	is_valid_map(char *file_name, t_map **map)
 	*map = malloc(sizeof(t_map));
 	if (!*map)
 		return (false);
-	fill_the_matrix(file_name, *map);
+	init_matrix(file_name, *map);
 	// if (is_too_small(matrix))
 	return (true);
 }
