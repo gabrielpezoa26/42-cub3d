@@ -1,30 +1,130 @@
-mudar rgb de void pra bool, pra poder dar free
-se o codigo de rgb for invalido, no lugar de so print_exit
+1 - Parsing de Texturas e Cores:
 
-Arrumados:
-{
--arrumar segfault no verify_info, tbm ta retornando invalido quando o mapa eh 
-valido na vdd
--arrumar leak quando tem duas chaves duplicadas, e falta uma outra. 
-    ex: dois "EA" mas n tem "SO"
-- fiz o inicio da parte da matrix, estou alocando, agora tem que preencher, com a matriz preenchida a gnt faz as verificações:
-- se é pequeno, se tem S ou N ou W ou E
-- acredito eu que todos os leaks já estão certos, fiz malloc e já arrumei os free
-}
+Objetivo: Extrair os caminhos para as texturas das paredes (NO, SO, WE, EA) e os valores RGB para o chão (F) e o teto (C) do seu arquivo .cub.
 
-Temos que
-{
-    -acho que era bom a gnete colocar o t_info na main, o parse_input ta com 25 linhas ja
-    -verificar os numeros do mapa para ver se é valido
-    -se der certo, fazer o malloc
+Detalhes:
 
+Você já deve ter lido essas linhas durante o parsing inicial, mas agora é a hora de convertê-las em dados utilizáveis.
 
+Para as texturas, você precisará carregar as imagens (geralmente arquivos .xpm) na memória usando funções da MiniLibX (como mlx_xpm_file_to_image e mlx_get_data_addr).
 
-	Agora que está mallocado, temos que ver se é valido o mapa ou não
-}
+Para as cores, converta os valores RGB (ex: 220,100,0) para um único inteiro que a MiniLibX possa usar.
 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2 - Inicialização da Janela e Gráficos (MiniLibX):
 
-parse matrix
-    ver se tem 1 spawn   OK
-    ver se ta fechado
-    cprrer pro abraço
+Objetivo: Criar a janela onde o jogo será exibido.
+
+Detalhes:
+
+Use mlx_init() para inicializar a conexão com o servidor gráfico.
+
+Use mlx_new_window() para criar a janela do jogo com as dimensões desejadas.
+
+Use mlx_new_image() para criar uma imagem na memória (buffer) onde você desenhará cada frame. Isso evita o "flickering" (cintilação) na tela.
+
+Use mlx_get_data_addr() para obter um ponteiro para os pixels dessa imagem, permitindo que você escreva diretamente nela.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+3 - Configuração do Jogador e Câmera:
+
+Objetivo: Definir a posição inicial do jogador e sua orientação no mundo 3D.
+
+Detalhes:
+
+Você já tem a posição inicial (player_start_copy ou similar) do parsing do mapa.
+
+Defina a direção inicial do jogador com base no caractere (N, S, E, W) encontrado no mapa. Isso envolve vetores de direção (ex: dirX, dirY).
+
+Defina o "plano da câmera" (ou "plano do campo de visão"). Este é um vetor perpendicular ao vetor de direção do jogador, que determina a largura do seu campo de visão.
+
+---------------------------------------------------------------------------------------------------
+
+4 - Implementação do Raycasting (O Coração do Jogo):
+
+Objetivo: Desenhar o mundo 3D lançando raios do jogador.
+
+Detalhes:
+
+Loop Principal: Crie um loop infinito (mlx_loop) que chamará sua função de renderização a cada frame.
+
+Loop de Raycasting: Dentro da sua função de renderização, itere por cada coluna de pixels da sua tela (da esquerda para a direita). Para cada coluna:
+
+Calcule a posição do raio no plano da câmera.
+
+Calcule a direção do raio.
+
+Use o algoritmo DDA (Digital Differential Analyzer) para percorrer o mapa e encontrar onde o raio atinge uma parede.
+
+Calcule a distância até a parede e a altura da fatia da parede a ser desenhada.
+
+Determine qual textura usar (Norte, Sul, Leste, Oeste) com base no lado da parede que foi atingido.
+
+Desenhe a fatia da parede na coluna correspondente da imagem (buffer), aplicando a textura.
+
+Desenhe o chão e o teto (cores ou texturas).
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+5 - Mapeamento de Texturas:
+
+Objetivo: Fazer com que as texturas das paredes apareçam corretamente.
+
+Detalhes:
+
+Ao desenhar a fatia da parede, você precisará calcular qual pixel da textura corresponde a cada pixel vertical da fatia da parede.
+
+Isso envolve cálculos de ponto de impacto do raio na parede e interpolação.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+6 - Controles do Jogador:
+
+Objetivo: Permitir que o jogador se mova e gire.
+
+Detalhes:
+
+Use mlx_key_hook ou mlx_hook com KeyPress e KeyRelease para capturar eventos de teclado.
+
+Implemente as ações para as teclas:
+
+W (ou seta para cima): Mover para frente.
+
+S (ou seta para baixo): Mover para trás.
+
+A: Mover para a esquerda (strafe).
+
+D: Mover para a direita (strafe).
+
+Seta esquerda: Girar a câmera para a esquerda.
+
+Seta direita: Girar a câmera para a direita.
+
+Lembre-se de verificar colisões com paredes ao mover o jogador.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7 - Mini-mapa (Opcional, mas muito útil para depuração):
+
+Objetivo: Exibir uma pequena representação 2D do mapa na tela, mostrando a posição do jogador e as paredes.
+
+Detalhes:
+
+Desenhe quadrados para paredes, espaços vazios e a posição do jogador.
+
+Pode ser feito em uma parte separada da sua imagem (buffer) ou como uma imagem sobreposta
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8 - Gerenciamento de Memória e Encerramento:
+
+Objetivo: Garantir que toda a memória alocada seja liberada e o programa termine de forma limpa.
+
+Detalhes:
+
+Use mlx_destroy_image(), mlx_destroy_window(), mlx_destroy_display() (ou mlx_destroy_mlx_ptr()) ao sair do programa.
+
+Libere todas as matrizes e estruturas de dados alocadas dinamicamente.
+
+Use mlx_hook para capturar o evento de fechar a janela (red X button) e sair do programa corretamente.
