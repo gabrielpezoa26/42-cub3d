@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dteruya <dteruya@student.42.fr>            +#+  +:+       +#+        */
+/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 18:22:52 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/23 20:34:11 by dteruya          ###   ########.fr       */
+/*   Updated: 2025/07/23 23:37:02 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,8 @@ bool	init_rgb(t_info *info, char *line);
 bool	is_valid_map(char *file_name, t_map **map);
 void	init_matrix(char *file_name, t_map *map);
 void	fill_the_matrix(char *file_name, t_map *map);
+
+/*PARA DEBUGAR*/
+void	print_matrix(int **matrix, int cols, int rows);
 
 #endif

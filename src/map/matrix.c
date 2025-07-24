@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dteruya <dteruya@student.42.fr>            +#+  +:+       +#+        */
+/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:57:21 by diego             #+#    #+#             */
-/*   Updated: 2025/07/23 19:53:04 by dteruya          ###   ########.fr       */
+/*   Updated: 2025/07/23 23:38:36 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,5 +119,5 @@ void	init_matrix(char *file_name, t_map *map)
 	kkkkkkkkk tem que preencher a matriz
 	*/
 	fill_the_matrix(file_name, map);
-	print_matrix(map->matrix, map->cols_amount, map->rows_amount);
+	// print_matrix(map->matrix, map->cols_amount, map->rows_amount);
 }

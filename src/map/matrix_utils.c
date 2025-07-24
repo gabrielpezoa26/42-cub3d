@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dteruya <dteruya@student.42.fr>            +#+  +:+       +#+        */
+/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 22:27:10 by diego             #+#    #+#             */
-/*   Updated: 2025/07/23 20:46:49 by dteruya          ###   ########.fr       */
+/*   Updated: 2025/07/23 23:33:47 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static char	*dg_strcmp(char c)
 		return ("2");
 }
 
+
 static void	insert_the_values(char *line, t_map *map, int i)
 {
 	int		j;
@@ -49,6 +50,7 @@ static void	insert_the_values(char *line, t_map *map, int i)
 			tmp = ft_strdup(dg_strcmp(line[j]));
 			if (ft_strcmp(tmp, "78") == 0)
 			{
+				map->pov = ft_calloc(1, sizeof(map->pov));
 				map->pov->x = j;
 				map->pov->y = i;
 			}
