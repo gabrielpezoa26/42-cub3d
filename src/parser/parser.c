@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dteruya <dteruya@student.42.fr>            +#+  +:+       +#+        */
+/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 13:54:07 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/23 19:56:44 by dteruya          ###   ########.fr       */
+/*   Updated: 2025/07/24 01:41:34 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ bool	parse_input(int ac, char **av, t_info **info, t_map **map)
 	}
 	if (!is_valid_file(av[1], info))
 		return (false);
-	if (!is_valid_map(av[1], map))
+	if (!is_valid_map(av[1], map, info))
 		return (false);
 	return (true);
 }

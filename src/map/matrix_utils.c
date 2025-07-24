@@ -6,7 +6,7 @@
 /*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 22:27:10 by diego             #+#    #+#             */
-/*   Updated: 2025/07/23 23:33:47 by diego            ###   ########.fr       */
+/*   Updated: 2025/07/24 02:57:21 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static char	*dg_strcmp(char c)
 	tmp[0] = c;
 	tmp[1] = '\0';
 	if (ft_strcmp(tmp, "0") == 0)
-		return ("0");
+		return ("3");
 	else if (ft_strcmp(tmp, "1") == 0)
 		return ("1");
 	else if (ft_strcmp(tmp, "N") == 0)
@@ -33,7 +33,6 @@ static char	*dg_strcmp(char c)
 	else
 		return ("2");
 }
-
 
 static void	insert_the_values(char *line, t_map *map, int i)
 {
@@ -82,4 +81,26 @@ void	fill_the_matrix(char *file_name, t_map *map)
 		line = get_next_line(fd);
 	}
 	close(fd);
+}
+
+/* PARA DEBUGAR */
+void	print_matrix(int **matrix, int cols, int rows)
+{
+	int	i;
+	int	j;
+
+	if (!matrix)
+		return ;
+	i = 0;
+	while (i < rows)
+	{
+		j = 0;
+		while (j < cols)
+		{
+			printf("%d ", matrix[i][j]);
+			j++;
+		}
+		printf("\n");
+		i++;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:57:21 by diego             #+#    #+#             */
-/*   Updated: 2025/07/23 23:38:36 by diego            ###   ########.fr       */
+/*   Updated: 2025/07/24 02:57:07 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int	count_char(char *line)
 	i = 0;
 	while (line[i] != '\0' && line[i] != '\n')
 		i++;
-	return(i);
+	return (i);
 }
 
 static void	verify_length(int *length, char *line)
@@ -85,39 +85,9 @@ static int	count_width(int *height, char *file_name)
 	return (length);
 }
 
-
-/* PARA DEBUGAR */
-void	print_matrix(int **matrix, int cols, int rows)
-{
-	int	i;
-	int	j;
-
-	if (!matrix)
-		return ;
-	i = 0;
-	while (i < rows)
-	{
-		j = 0;
-		while (j < cols)
-		{
-			printf("%d ", matrix[i][j]);
-			j++;
-		}
-		printf("\n");
-		i++;
-	}
-}
-
-
 void	init_matrix(char *file_name, t_map *map)
 {
 	map->cols_amount = count_width(&map->rows_amount, file_name);
-	printf("%d\n", map->cols_amount);
-	printf("%d\n", map->rows_amount);
 	ft_malloc(map);
-	/*
-	kkkkkkkkk tem que preencher a matriz
-	*/
 	fill_the_matrix(file_name, map);
-	// print_matrix(map->matrix, map->cols_amount, map->rows_amount);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dteruya <dteruya@student.42.fr>            +#+  +:+       +#+        */
+/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 20:03:47 by dteruya           #+#    #+#             */
-/*   Updated: 2025/07/23 19:57:52 by dteruya          ###   ########.fr       */
+/*   Updated: 2025/07/24 02:58:58 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	is_identifier(t_info *info, char *line, int *i)
 		init_rgb(info, line);
 }
 
-static void inittttt(t_info *info)
+static void	inittttt(t_info *info)
 {
 	info->east_texture = NULL;
 	info->west_texture = NULL;
