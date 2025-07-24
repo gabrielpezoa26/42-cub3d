@@ -6,7 +6,7 @@
 /*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 22:27:10 by diego             #+#    #+#             */
-/*   Updated: 2025/07/24 02:57:21 by diego            ###   ########.fr       */
+/*   Updated: 2025/07/24 15:14:04 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,19 @@ static char	*dg_strcmp(char c)
 		return ("2");
 }
 
+static bool	search_the_letter(char *tmp)
+{
+	if (ft_strcmp(tmp, "78") == 0)
+		return (true);
+	else if (ft_strcmp(tmp, "83") == 0)
+		return (true);
+	else if (ft_strcmp(tmp, "87") == 0)
+		return (true);
+	else if (ft_strcmp(tmp, "69") == 0)
+		return (true);
+	return (false);
+}
+
 static void	insert_the_values(char *line, t_map *map, int i)
 {
 	int		j;
@@ -47,7 +60,7 @@ static void	insert_the_values(char *line, t_map *map, int i)
 		else
 		{
 			tmp = ft_strdup(dg_strcmp(line[j]));
-			if (ft_strcmp(tmp, "78") == 0)
+			if (search_the_letter(tmp))
 			{
 				map->pov = ft_calloc(1, sizeof(map->pov));
 				map->pov->x = j;
