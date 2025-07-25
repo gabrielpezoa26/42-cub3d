@@ -6,11 +6,11 @@
 /*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 00:46:41 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/24 02:58:47 by diego            ###   ########.fr       */
+/*   Updated: 2025/07/24 18:00:09 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../../includes/cub3d.h"
 
 static bool	is_empty_file(char *file_name)
 {
@@ -37,16 +37,16 @@ static bool	is_empty_file(char *file_name)
 
 static bool	verify_info(t_info **info)
 {
-	if (!(*info)->south_texture)
+	if (!(*info)->south_path)
 	{
 		printf("DEBUG: dasdsadsa\n");
 		return (false);
 	}
-	if (!(*info)->west_texture)
+	if (!(*info)->west_path)
 		return (false);
-	if (!(*info)->east_texture)
+	if (!(*info)->east_path)
 		return (false);
-	if (!(*info)->north_texture)
+	if (!(*info)->north_path)
 		return (false);
 	return (true);
 }

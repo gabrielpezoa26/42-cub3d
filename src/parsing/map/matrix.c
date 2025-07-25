@@ -6,11 +6,11 @@
 /*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:57:21 by diego             #+#    #+#             */
-/*   Updated: 2025/07/24 02:57:07 by diego            ###   ########.fr       */
+/*   Updated: 2025/07/24 15:41:52 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../../includes/cub3d.h"
 
 static void	ft_malloc(t_map *map)
 {

@@ -6,7 +6,7 @@
 /*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 18:22:52 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/24 02:51:53 by diego            ###   ########.fr       */
+/*   Updated: 2025/07/24 18:34:17 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # define INVALID_ARGC "Invalid arg count\n"
 # define FORMAT "Invalid format. Correct format:\n./cub3D file.cub\n"
 # define STRUCT "Invalid struct!!\n"
+# define MLX "Error initializing mlx!!\n"
 
 # define WALL_VALUE 1
 # define EMPTY_VALUE 0
@@ -40,21 +41,42 @@ typedef struct s_point
 
 typedef struct s_info
 {
-	char	*north_texture;
-	char	*south_texture;
-	char	*west_texture;
-	char	*east_texture;
+	char	*north_path;
+	char	*south_path;
+	char	*west_path;
+	char	*east_path;
 	int		floor_color[3];
 	int		ceiling_color[3];
 }	t_info;
 
+// typedef struct s_img
+// {
+// 	void	*img_ptr;
+// 	char	*addr;
+// 	int		bpp;
+// 	int		line_len;
+// 	int		endian;
+// 	int		width;
+// 	int		height;
+// }	t_img;
+
+typedef struct s_texture
+{
+	xpm_t	*north;
+	xpm_t	*south;
+	xpm_t	*west;
+	xpm_t	*east;
+}	t_texture;
+
 typedef struct s_map
 {
-	int		rows_amount;
-	int		cols_amount;
-	int		**matrix;
-	t_point	*pov;
-	t_info	*info;
+	int			rows_amount;
+	int			cols_amount;
+	int			**matrix;
+	mlx_t		*mlx;
+	t_point		*pov;
+	t_info		*info;
+	t_texture	*text;
 }	t_map;
 
 /*---------PARSER---------*/
@@ -76,10 +98,9 @@ bool	is_only_wspace(char *line);
 void	init_info(char *file_name, t_info **info);
 
 /*---------CLEANUP---------*/
-void	free_info(t_info *info);
 void	free_map(t_map *map);
 void	free_matrix(int **matrix, int height);
-void	exit_error(char *str);
+void	exit_error(char *str, t_map *map);
 
 /*---------ROSE--------------*/
 void	init_south(t_info *info, int *i, char *line);
@@ -102,5 +123,10 @@ int		**dup_int_matrix(t_map *map);
 
 /*PARA DEBUGAR*/
 void	print_matrix(int **matrix, int cols, int rows);
+
+/*--------------------EXEC------------------*/
+
+/*--------------LOAD_TEXT--------------------*/
+void	load_textures(t_map *map);
 
 #endif

@@ -6,11 +6,11 @@
 /*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 15:18:38 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/24 03:00:01 by diego            ###   ########.fr       */
+/*   Updated: 2025/07/24 15:42:01 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../../includes/cub3d.h"
 
 static void	free_split(char **arr)
 {

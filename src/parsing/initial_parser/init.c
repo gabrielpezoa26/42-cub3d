@@ -6,11 +6,11 @@
 /*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 20:03:47 by dteruya           #+#    #+#             */
-/*   Updated: 2025/07/24 02:58:58 by diego            ###   ########.fr       */
+/*   Updated: 2025/07/24 18:00:26 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../../includes/cub3d.h"
 
 static void	is_identifier(t_info *info, char *line, int *i)
 {
@@ -28,10 +28,10 @@ static void	is_identifier(t_info *info, char *line, int *i)
 
 static void	inittttt(t_info *info)
 {
-	info->east_texture = NULL;
-	info->west_texture = NULL;
-	info->south_texture = NULL;
-	info->north_texture = NULL;
+	info->east_path = NULL;
+	info->west_path = NULL;
+	info->south_path = NULL;
+	info->north_path = NULL;
 	info->floor_color[0] = -1;
 	info->ceiling_color[0] = -1;
 }

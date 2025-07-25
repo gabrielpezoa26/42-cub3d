@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parser_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
+/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 15:59:31 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/14 13:38:34 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/07/24 15:41:17 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../../includes/cub3d.h"
 
 bool	is_valid_char(int c)
 {

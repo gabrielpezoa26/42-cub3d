@@ -6,11 +6,11 @@
 /*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 02:50:12 by diego             #+#    #+#             */
-/*   Updated: 2025/07/24 02:58:21 by diego            ###   ########.fr       */
+/*   Updated: 2025/07/24 18:21:13 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../../includes/cub3d.h"
 
 static void	init_matrix_copy(int **copy_matrix, t_map *map)
 {
@@ -39,7 +39,7 @@ int	**dup_int_matrix(t_map *map)
 	i = 0;
 	copy_matrix = ft_calloc(map->rows_amount, sizeof(int *));
 	if (copy_matrix == NULL)
-		exit_error("Memory allocation failed for matrix");
+		exit_error("Memory allocation failed for matrix", map);
 	while (i < map->rows_amount)
 	{
 		copy_matrix[i] = ft_calloc(map->cols_amount, sizeof(int));

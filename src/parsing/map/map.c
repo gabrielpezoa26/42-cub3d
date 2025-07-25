@@ -6,11 +6,11 @@
 /*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 14:31:37 by diego             #+#    #+#             */
-/*   Updated: 2025/07/24 02:58:01 by diego            ###   ########.fr       */
+/*   Updated: 2025/07/24 15:41:44 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../../includes/cub3d.h"
 
 static bool	is_empty_map(char *file_name)
 {

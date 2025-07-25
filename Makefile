@@ -15,18 +15,21 @@ OBJ_DIR = objects
 DEPS = ../includes/cub3d.h
 
 SRC_DIR = src
-PARSER_DIR = src/parser
-RGB_DIR = src/rgb
-MAP_DIR = src/map
-CARDINAL_DIR = src/cardinal_points
+PARSER_DIR = src/parsing
+EXEC_DIR = src/exec
+SAVING_DIR = $(EXEC_DIR)/load
+INITIAL_PARS_DIR = $(PARSER_DIR)/initial_parser
+RGB_DIR = $(PARSER_DIR)/rgb
+MAP_DIR = $(PARSER_DIR)/map
+CARDINAL_DIR = $(PARSER_DIR)/cardinal_points
 UTILS_DIR = src/utils
 
 SRC = $(SRC_DIR)/main.c \
-		$(PARSER_DIR)/parser.c \
-		$(PARSER_DIR)/parser_utils.c \
-		$(PARSER_DIR)/validate_file.c \
-		$(PARSER_DIR)/validate_file_utils.c \
-		$(PARSER_DIR)/init.c \
+		$(INITIAL_PARS_DIR)/parser.c \
+		$(INITIAL_PARS_DIR)/parser_utils.c \
+		$(INITIAL_PARS_DIR)/validate_file.c \
+		$(INITIAL_PARS_DIR)/validate_file_utils.c \
+		$(INITIAL_PARS_DIR)/init.c \
 		$(CARDINAL_DIR)/rose_of_winds.c \
 		$(RGB_DIR)/rgb.c \
 		$(MAP_DIR)/map.c \
@@ -35,6 +38,8 @@ SRC = $(SRC_DIR)/main.c \
 		$(MAP_DIR)/flood_fill.c \
 		$(MAP_DIR)/flood_fill_utils.c \
 		$(UTILS_DIR)/cleanup.c \
+		$(UTILS_DIR)/utils.c \
+		$(SAVING_DIR)/textures.c \
 
 OBJS = $(SRC:%.c=$(OBJ_DIR)/%.o)
 

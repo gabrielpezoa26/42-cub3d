@@ -6,11 +6,11 @@
 /*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 14:50:23 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/22 15:10:57 by diego            ###   ########.fr       */
+/*   Updated: 2025/07/24 15:41:26 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../../includes/cub3d.h"
 
 static bool	mango_loko(char *line)
 {

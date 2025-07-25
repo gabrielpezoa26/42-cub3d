@@ -6,11 +6,11 @@
 /*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 22:27:10 by diego             #+#    #+#             */
-/*   Updated: 2025/07/24 15:14:04 by diego            ###   ########.fr       */
+/*   Updated: 2025/07/24 15:41:48 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../../includes/cub3d.h"
 
 static char	*dg_strcmp(char c)
 {

@@ -6,11 +6,11 @@
 /*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 02:16:13 by diego             #+#    #+#             */
-/*   Updated: 2025/07/24 02:55:11 by diego            ###   ########.fr       */
+/*   Updated: 2025/07/24 15:41:40 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../../includes/cub3d.h"
 
 bool	flood_fill_recursive(t_map **map, int **map_copy, int x, int y)
 {
