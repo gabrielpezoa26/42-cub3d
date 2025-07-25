@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   validate_file_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 14:50:23 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/24 15:41:26 by diego            ###   ########.fr       */
+/*   Updated: 2025/07/25 15:36:06 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/cub3d.h"
 
-static bool	mango_loko(char *line)
+static bool	get_name(char *line)
 {
 	int		i;
 
@@ -61,9 +61,9 @@ bool	map_before(char *file_name)
 	{
 		if (*line != '\n' && !is_only_wspace(line))
 		{
-			if (mango_loko(line))
+			if (get_name(line))
 				count++;
-			else if (!(mango_loko(line)) && count != 6)
+			else if (!(get_name(line)) && count != 6)
 				flag = false;
 		}
 		free(line);

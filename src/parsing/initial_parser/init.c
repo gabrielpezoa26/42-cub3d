@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 20:03:47 by dteruya           #+#    #+#             */
-/*   Updated: 2025/07/24 18:00:26 by diego            ###   ########.fr       */
+/*   Updated: 2025/07/25 15:30:05 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	is_identifier(t_info *info, char *line, int *i)
 		init_rgb(info, line);
 }
 
-static void	inittttt(t_info *info)
+static void	init_info_struct(t_info *info)
 {
 	info->east_path = NULL;
 	info->west_path = NULL;
@@ -43,7 +43,7 @@ void	init_info(char *file_name, t_info **info)
 	int		i;
 
 	*info = ft_calloc(1, sizeof(t_info));
-	inittttt(*info);
+	init_info_struct(*info);
 	fd = open(file_name, O_RDONLY);
 	if (fd < 0)
 		print_and_exit("Error: opening file");

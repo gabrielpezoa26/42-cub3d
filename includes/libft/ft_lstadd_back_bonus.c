@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 13:44:58 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/06/02 22:54:44 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/07/25 15:34:03 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list	*potato;
+	t_list	*list;
 
 	if (lst == NULL || new == NULL)
 		return ;
@@ -23,6 +23,6 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		*lst = new;
 		return ;
 	}
-	potato = ft_lstlast(*lst);
-	potato->next = new;
+	list = ft_lstlast(*lst);
+	list->next = new;
 }

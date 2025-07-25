@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 18:22:52 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/25 15:14:10 by diego            ###   ########.fr       */
+/*   Updated: 2025/07/25 16:49:05 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,26 @@
 # define EMPTY_VALUE 0
 # define VISITED_VALUE 9
 
+# define WIDTH 800
+# define HEIGHT 800
+# define TITLE "CUB 3D"
+
 typedef struct s_point
 {
 	int	x;
 	int	y;
 }	t_point;
+
+typedef struct s_data_img
+{
+	void	*img_ptr;
+	char	*addr;
+	int		width;
+	int		height;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}	t_data_img;
 
 typedef struct s_info
 {
@@ -50,23 +65,12 @@ typedef struct s_info
 	int		ceiling_color[3];
 }	t_info;
 
-// typedef struct s_img
-// {
-// 	void	*img_ptr;
-// 	char	*addr;
-// 	int		bpp;
-// 	int		line_len;
-// 	int		endian;
-// 	int		width;
-// 	int		height;
-// }	t_img;
-
 typedef struct s_texture
 {
-	t_img	*north;
-	t_img	*south;
-	t_img	*west;
-	t_img	*east;
+	t_data_img	*north;
+	t_data_img	*south;
+	t_data_img	*west;
+	t_data_img	*east;
 }	t_texture;
 
 typedef struct s_map
@@ -74,7 +78,9 @@ typedef struct s_map
 	int			rows_amount;
 	int			cols_amount;
 	int			**matrix;
-	void		*mlx;
+	void		*mlx_ptr;
+	void		*window_ptr;
+	void		*img_ptr;
 	t_point		*pov;
 	t_info		*info;
 	t_texture	*text;

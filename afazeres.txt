@@ -1,130 +1,126 @@
-1 - Parsing de Texturas e Cores:
-
-Objetivo: Extrair os caminhos para as texturas das paredes (NO, SO, WE, EA) e os valores RGB para o chão (F) e o teto (C) do seu arquivo .cub.
-
-Detalhes:
-
-Você já deve ter lido essas linhas durante o parsing inicial, mas agora é a hora de convertê-las em dados utilizáveis.
-
-Para as texturas, você precisará carregar as imagens (geralmente arquivos .xpm) na memória usando funções da MiniLibX (como mlx_xpm_file_to_image e mlx_get_data_addr).
-
-Para as cores, converta os valores RGB (ex: 220,100,0) para um único inteiro que a MiniLibX possa usar.
-
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-2 - Inicialização da Janela e Gráficos (MiniLibX):
-
-Objetivo: Criar a janela onde o jogo será exibido.
+1. Parsing e Preparação dos Dados (Lógica em C)
+Objetivo: Ler o arquivo .cub e extrair todas as informações de configuração para suas estruturas de dados.
 
 Detalhes:
 
-Use mlx_init() para inicializar a conexão com o servidor gráfico.
+Esta etapa não usa a minilibx. É um trabalho de manipulação de arquivos e strings em C.
 
-Use mlx_new_window() para criar a janela do jogo com as dimensões desejadas.
+Leia os caminhos das quatro texturas (NO, SO, WE, EA) e armazene-os como strings (char *).
 
-Use mlx_new_image() para criar uma imagem na memória (buffer) onde você desenhará cada frame. Isso evita o "flickering" (cintilação) na tela.
+Leia os valores RGB para o chão (F) e o teto (C).
 
-Use mlx_get_data_addr() para obter um ponteiro para os pixels dessa imagem, permitindo que você escreva diretamente nela.
+Conversão de Cor: Crie uma função para converter os três valores int (R, G, B) em um único int que representa a cor. A minilibx trabalha com cores empacotadas em um único inteiro. A fórmula comum é (r << 16) + (g << 8) + b.
 
----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-3 - Configuração do Jogador e Câmera:
+---------------------------------------------------------------
 
-Objetivo: Definir a posição inicial do jogador e sua orientação no mundo 3D.
-
-Detalhes:
-
-Você já tem a posição inicial (player_start_copy ou similar) do parsing do mapa.
-
-Defina a direção inicial do jogador com base no caractere (N, S, E, W) encontrado no mapa. Isso envolve vetores de direção (ex: dirX, dirY).
-
-Defina o "plano da câmera" (ou "plano do campo de visão"). Este é um vetor perpendicular ao vetor de direção do jogador, que determina a largura do seu campo de visão.
-
----------------------------------------------------------------------------------------------------
-
-4 - Implementação do Raycasting (O Coração do Jogo):
-
-Objetivo: Desenhar o mundo 3D lançando raios do jogador.
+2. Inicialização da Janela e Gráficos (minilibx)
+Objetivo: Preparar o ambiente gráfico para renderizar o jogo.
 
 Detalhes:
 
-Loop Principal: Crie um loop infinito (mlx_loop) que chamará sua função de renderização a cada frame.
+mlx_init: Use esta função primeiro para estabelecer a conexão com o sistema gráfico. Ela retorna um ponteiro void * que você usará em quase todas as outras chamadas.
 
-Loop de Raycasting: Dentro da sua função de renderização, itere por cada coluna de pixels da sua tela (da esquerda para a direita). Para cada coluna:
+mlx_new_window: Use-a para criar a janela onde o jogo será exibido. Ela também retorna um ponteiro void *.
 
-Calcule a posição do raio no plano da câmera.
+mlx_new_image: Crie uma imagem em memória que servirá como seu "buffer" de desenho. É aqui que você desenhará cada frame antes de exibi-lo na tela, para evitar cintilação (flickering).
 
-Calcule a direção do raio.
+mlx_get_data_addr: Passo crucial. Use esta função na imagem que você acabou de criar. Ela te dará um ponteiro (char *addr) para o início dos dados dos pixels, além de informações como bits_per_pixel, line_length e endian, que são essenciais para você poder desenhar na imagem manualmente.
 
-Use o algoritmo DDA (Digital Differential Analyzer) para percorrer o mapa e encontrar onde o raio atinge uma parede.
-
-Calcule a distância até a parede e a altura da fatia da parede a ser desenhada.
-
-Determine qual textura usar (Norte, Sul, Leste, Oeste) com base no lado da parede que foi atingido.
-
-Desenhe a fatia da parede na coluna correspondente da imagem (buffer), aplicando a textura.
-
-Desenhe o chão e o teto (cores ou texturas).
-
---------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-5 - Mapeamento de Texturas:
-
-Objetivo: Fazer com que as texturas das paredes apareçam corretamente.
+3. Carregamento das Texturas (minilibx)
+Objetivo: Carregar os arquivos de imagem das paredes para a memória.
 
 Detalhes:
 
-Ao desenhar a fatia da parede, você precisará calcular qual pixel da textura corresponde a cada pixel vertical da fatia da parede.
+Para cada um dos quatro caminhos de textura que você extraiu:
 
-Isso envolve cálculos de ponto de impacto do raio na parede e interpolação.
+mlx_xpm_file_to_image: Use esta função para carregar o arquivo .xpm e criar um recurso de imagem na memória.
 
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+mlx_get_data_addr: Assim como fez para a imagem principal, use esta função em cada imagem de textura para obter o ponteiro para os dados brutos dos pixels. Você precisará dessas informações para ler a cor de cada pixel da textura durante a renderização.
 
-6 - Controles do Jogador:
-
-Objetivo: Permitir que o jogador se mova e gire.
-
-Detalhes:
-
-Use mlx_key_hook ou mlx_hook com KeyPress e KeyRelease para capturar eventos de teclado.
-
-Implemente as ações para as teclas:
-
-W (ou seta para cima): Mover para frente.
-
-S (ou seta para baixo): Mover para trás.
-
-A: Mover para a esquerda (strafe).
-
-D: Mover para a direita (strafe).
-
-Seta esquerda: Girar a câmera para a esquerda.
-
-Seta direita: Girar a câmera para a direita.
-
-Lembre-se de verificar colisões com paredes ao mover o jogador.
-
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-7 - Mini-mapa (Opcional, mas muito útil para depuração):
-
-Objetivo: Exibir uma pequena representação 2D do mapa na tela, mostrando a posição do jogador e as paredes.
+4. Configuração do Jogador e Câmera (Lógica Matemática)
+Objetivo: Definir a posição e o campo de visão iniciais do jogador.
 
 Detalhes:
 
-Desenhe quadrados para paredes, espaços vazios e a posição do jogador.
+Esta etapa é puramente matemática e não usa funções da minilibx.
 
-Pode ser feito em uma parte separada da sua imagem (buffer) ou como uma imagem sobreposta
+Use a posição inicial (x, y) e o caractere de direção (N, S, E, W) que você extraiu do mapa.
 
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Defina o vetor de direção do jogador (por exemplo, dirX = 0, dirY = -1 para 'N').
 
-8 - Gerenciamento de Memória e Encerramento:
+Defina o plano da câmera, que é perpendicular ao vetor de direção e controla a largura do campo de visão (FOV). Por exemplo, para 'N', o plano da câmera poderia ser planeX = 0.66, planeY = 0.
 
-Objetivo: Garantir que toda a memória alocada seja liberada e o programa termine de forma limpa.
+5. Implementação do Raycasting e Renderização
+Objetivo: Desenhar o mundo 3D na sua imagem de buffer.
 
 Detalhes:
 
-Use mlx_destroy_image(), mlx_destroy_window(), mlx_destroy_display() (ou mlx_destroy_mlx_ptr()) ao sair do programa.
+Loop Principal: A função que contém a lógica de renderização será registrada usando mlx_loop_hook.
 
-Libere todas as matrizes e estruturas de dados alocadas dinamicamente.
+Função de Renderização: Dentro desta função:
 
-Use mlx_hook para capturar o evento de fechar a janela (red X button) e sair do programa corretamente.
+Itere por cada coluna de pixels da tela (de x = 0 até a largura da janela).
+
+Calcule a direção do raio para a coluna x atual.
+
+Algoritmo DDA: Percorra a grade do mapa passo a passo, seguindo o raio, até atingir uma parede.
+
+Calcule a Distância: Determine a distância perpendicular do jogador até a parede para evitar o efeito "olho de peixe".
+
+Calcule a Altura da Parede: Com base na distância, calcule a altura da fatia vertical da parede a ser desenhada na tela.
+
+Desenhe o Cenário:
+
+Desenhe uma linha vertical para o teto com a cor que você preparou.
+
+Desenhe a fatia da parede, aplicando a textura correta (veja o próximo passo).
+
+Desenhe uma linha vertical para o chão com a cor apropriada.
+
+Exibição na Tela: Após desenhar o frame inteiro na sua imagem de buffer, chame mlx_put_image_to_window para copiar o buffer para a janela de uma só vez.
+
+6. Mapeamento de Texturas (Lógica Matemática)
+Objetivo: Aplicar a textura correta na fatia de parede desenhada.
+
+Detalhes:
+
+Quando o raio atinge uma parede, determine qual textura usar (Norte, Sul, Leste ou Oeste).
+
+Calcule o ponto exato (wallX) onde o raio atingiu a parede (um valor entre 0.0 e 1.0).
+
+Use wallX para encontrar a coluna da textura (texX) a ser usada.
+
+Ao desenhar a fatia vertical da parede na tela, para cada pixel, calcule a coordenada Y correspondente na textura (texY) e copie a cor da textura para a sua imagem de buffer.
+
+7. Controles do Jogador (minilibx)
+Objetivo: Permitir que o jogador se mova pelo cenário.
+
+Detalhes:
+
+mlx_hook (ou a mais simples mlx_key_hook): Registre uma função para ser chamada sempre que uma tecla for pressionada.
+
+Dentro da função de hook, verifique o keycode da tecla pressionada:
+
+Movimento (W, S, A, D): Altere as coordenadas posX e posY do jogador, sempre verificando se a nova posição não está dentro de uma parede (detecção de colisão).
+
+Rotação (Setas ←, →): Gire o vetor de direção e o plano da câmera do jogador usando uma matriz de rotação.
+
+8. Gerenciamento de Memória e Encerramento (minilibx)
+Objetivo: Sair do programa de forma limpa, liberando todos os recursos.
+
+Detalhes:
+
+mlx_hook: Registre uma função para o evento de fechar a janela (o "X" vermelho). O nome do evento é DestroyNotify (código 17).
+
+Função de Saída: Nesta função, você deve:
+
+Liberar todas as suas alocações manuais (free).
+
+mlx_destroy_image: Chame esta função para cada imagem que você criou (o buffer principal e as quatro texturas).
+
+mlx_destroy_window: Destrua a janela.
+
+mlx_destroy_display: Libere a conexão com o sistema gráfico.
+
+Chame exit(0).

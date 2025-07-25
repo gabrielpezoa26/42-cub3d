@@ -3,39 +3,68 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 15:48:14 by diego             #+#    #+#             */
-/*   Updated: 2025/07/25 15:12:39 by diego            ###   ########.fr       */
+/*   Updated: 2025/07/25 16:26:17 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/cub3d.h"
 
-// static void	init_textures(t_texture *text)
-// {
-// 	text->north = NULL;
-// 	text->south = NULL;
-// 	text->east = NULL;
-// 	text->west = NULL;
-// }
+int rgb_to_int(int r, int g, int b)
+{
+	return ((r << 16) | (g << 8) | b);
+}
 
-// void	load_textures(t_map *map)
-// {
-// 	map->text = (t_texture *)malloc(sizeof(t_texture));
-// 	if (!map->text)
-// 		exit_error("Error trying to malloc text\n", map);
-// 	init_textures(map->text);
-// 	map->text->north = mlx_load_xpm42(map->info->north_path);
-// 	if (!map->text->north)
-// 		exit_error("Error loading texture NO\n", map);
-// 	map->text->south = mlx_load_xpm42(map->info->south_path);
-// 	if (!map->text->south)
-// 		exit_error("Error loading texture SO\n", map);
-// 	map->text->east = mlx_load_xpm42(map->info->east_path);
-// 	if (!map->text->east)
-// 		exit_error("Error loading texture EA\n", map);
-// 	map->text->west = mlx_load_xpm42(map->info->west_path);
-// 	if (!map->text->west)
-// 		exit_error("Error loading texture WE\n", map);
-// }
+void    load_textures(t_map *map)
+{
+	map->text->north = (t_data_img *)malloc(sizeof(t_data_img));
+	if (!map->text->north)
+		exit_error("Error allocating memory for North texture\n", map);
+	map->text->north->img_ptr = mlx_xpm_file_to_image(map->mlx_ptr,
+			map->info->north_path, &map->text->north->width,
+			&map->text->north->height);
+	if (!map->text->north->img_ptr)
+		exit_error("Error loading texture NO\n", map);
+	map->text->north->addr = mlx_get_data_addr(map->text->north->img_ptr,
+			&map->text->north->bits_per_pixel,
+			&map->text->north->line_length, &map->text->north->endian);
+
+	map->text->south = (t_data_img *)malloc(sizeof(t_data_img));
+	if (!map->text->south)
+		exit_error("Error allocating memory for South texture\n", map);
+	map->text->south->img_ptr = mlx_xpm_file_to_image(map->mlx_ptr,
+			map->info->south_path, &map->text->south->width,
+			&map->text->south->height);
+	if (!map->text->south->img_ptr)
+		exit_error("Error loading texture SO\n", map);
+	map->text->south->addr = mlx_get_data_addr(map->text->south->img_ptr,
+			&map->text->south->bits_per_pixel,
+			&map->text->south->line_length, &map->text->south->endian);
+
+	map->text->east = (t_data_img *)malloc(sizeof(t_data_img));
+	if (!map->text->east)
+		exit_error("Error allocating memory for East texture\n", map);
+	map->text->east->img_ptr = mlx_xpm_file_to_image(map->mlx_ptr,
+			map->info->east_path, &map->text->east->width,
+			&map->text->east->height);
+	if (!map->text->east->img_ptr)
+		exit_error("Error loading texture EA\n", map);
+	map->text->east->addr = mlx_get_data_addr(map->text->east->img_ptr,
+			&map->text->east->bits_per_pixel,
+			&map->text->east->line_length, &map->text->east->endian);
+
+	map->text->west = (t_data_img *)malloc(sizeof(t_data_img));
+	if (!map->text->west)
+		exit_error("Error allocating memory for West texture\n", map);
+	map->text->west->img_ptr = mlx_xpm_file_to_image(map->mlx_ptr,
+			map->info->west_path, &map->text->west->width,
+			&map->text->west->height);
+	if (!map->text->west->img_ptr)
+		exit_error("Error loading texture WE\n", map);
+	map->text->west->addr = mlx_get_data_addr(map->text->west->img_ptr,
+			&map->text->west->bits_per_pixel,
+			&map->text->west->line_length, &map->text->west->endian);
+	printf("DEBUG: texturessss\n");
+}
