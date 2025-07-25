@@ -6,7 +6,7 @@
 /*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 02:16:13 by diego             #+#    #+#             */
-/*   Updated: 2025/07/24 15:41:40 by diego            ###   ########.fr       */
+/*   Updated: 2025/07/25 15:17:10 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,12 @@ static bool	prepare_and_validate_fill(t_map *map, int ***temp_map_ptr)
 		printf("Error: Player start position is out of map bounds.\n");
 		return (false);
 	}
-	flood_fill_recursive(&map, *temp_map_ptr,
-		player_start_copy.x, player_start_copy.y);
+	if (!flood_fill_recursive(&map, *temp_map_ptr,
+		player_start_copy.x, player_start_copy.y))
+		{
+			free_matrix(*temp_map_ptr, map->rows_amount);
+			return (false);
+		}
 	return (true);
 }
 
@@ -74,14 +78,14 @@ static bool	validate_map_cell(int **temp_map, int y, int x, t_point map_size)
 	return (true);
 }
 
-static bool	check_filled_map_integrity(t_map *map_data, int **temp_map)
+static bool	check_filled_map_integrity(t_map *map, int **temp_map)
 {
 	int		y_idx;
 	int		x_idx;
 	t_point	map_size;
 
-	map_size.y = map_data->rows_amount;
-	map_size.x = map_data->cols_amount;
+	map_size.y = map->rows_amount;
+	map_size.x = map->cols_amount;
 	y_idx = 0;
 	while (y_idx < map_size.y)
 	{
@@ -90,7 +94,7 @@ static bool	check_filled_map_integrity(t_map *map_data, int **temp_map)
 		{
 			if (!validate_map_cell(temp_map, y_idx, x_idx, map_size))
 			{
-				free_matrix(temp_map, map_data->rows_amount);
+				free_matrix(temp_map, map->rows_amount);
 				return (false);
 			}
 			x_idx++;

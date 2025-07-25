@@ -6,7 +6,7 @@
 /*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 22:27:10 by diego             #+#    #+#             */
-/*   Updated: 2025/07/24 15:41:48 by diego            ###   ########.fr       */
+/*   Updated: 2025/07/25 14:24:44 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static char	*dg_strcmp(char c)
 
 	tmp[0] = c;
 	tmp[1] = '\0';
-	if (ft_strcmp(tmp, "0") == 0)
+	if ((ft_strcmp(tmp, "0") == 0) || (ft_strcmp(tmp, " ") == 0))
 		return ("3");
 	else if (ft_strcmp(tmp, "1") == 0)
 		return ("1");

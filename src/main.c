@@ -6,7 +6,7 @@
 /*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 18:22:43 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/24 18:29:41 by diego            ###   ########.fr       */
+/*   Updated: 2025/07/25 15:11:40 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ int	main(int ac, char **av)
 		printf("DEBUG: Deu ruim no mapa\n");
 	else
 	{
-		map->mlx = mlx_init(800, 600, "OIA A JANELA AÊ", false);
-		load_textures(map);
+		// map->mlx = mlx_init(800, 600, "OIA A JANELA AÊ", false);
+		// load_textures(map);
 		printf("DEBUG: finish\n");
 	}
 	if (map)
-		free_map(map);
+		free_map(&map);
 	return (0);
 }

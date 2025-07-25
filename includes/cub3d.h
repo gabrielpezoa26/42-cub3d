@@ -6,7 +6,7 @@
 /*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 18:22:52 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/24 18:34:17 by diego            ###   ########.fr       */
+/*   Updated: 2025/07/25 15:14:10 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@
 # include <stdbool.h>
 # include <limits.h>
 # include "libft/libft.h"
-# include "../MLX42/include/MLX42/MLX42.h"
+# include "../minilibx-linux/mlx.h"
+# include "../minilibx-linux/mlx_int.h"
 
 /*---------MACROS---------*/
 # define INVALID_ARGC "Invalid arg count\n"
@@ -62,10 +63,10 @@ typedef struct s_info
 
 typedef struct s_texture
 {
-	xpm_t	*north;
-	xpm_t	*south;
-	xpm_t	*west;
-	xpm_t	*east;
+	t_img	*north;
+	t_img	*south;
+	t_img	*west;
+	t_img	*east;
 }	t_texture;
 
 typedef struct s_map
@@ -73,7 +74,7 @@ typedef struct s_map
 	int			rows_amount;
 	int			cols_amount;
 	int			**matrix;
-	mlx_t		*mlx;
+	void		*mlx;
 	t_point		*pov;
 	t_info		*info;
 	t_texture	*text;
@@ -98,7 +99,7 @@ bool	is_only_wspace(char *line);
 void	init_info(char *file_name, t_info **info);
 
 /*---------CLEANUP---------*/
-void	free_map(t_map *map);
+void	free_map(t_map **map);
 void	free_matrix(int **matrix, int height);
 void	exit_error(char *str, t_map *map);
 

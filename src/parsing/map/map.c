@@ -6,7 +6,7 @@
 /*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 14:31:37 by diego             #+#    #+#             */
-/*   Updated: 2025/07/24 15:41:44 by diego            ###   ########.fr       */
+/*   Updated: 2025/07/25 14:33:42 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ bool	is_valid_map(char *file_name, t_map **map, t_info **info)
 		printf("DEBUG: Não tem mapa\n");
 		return (false);
 	}
-	*map = malloc(sizeof(t_map));
+	*map = ft_calloc(1, sizeof(t_map));
 	if (!*map)
 		return (false);
 	init_matrix(file_name, *map);
