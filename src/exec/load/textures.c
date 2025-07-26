@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 15:48:14 by diego             #+#    #+#             */
-/*   Updated: 2025/07/25 16:26:17 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/07/26 19:21:56 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,13 @@ int rgb_to_int(int r, int g, int b)
 	return ((r << 16) | (g << 8) | b);
 }
 
-void    load_textures(t_map *map)
+void load_north_texture(t_map *map)
 {
+	printf("DEBUG: entering load_north_texture\n");
 	map->text->north = (t_data_img *)malloc(sizeof(t_data_img));
 	if (!map->text->north)
 		exit_error("Error allocating memory for North texture\n", map);
+	printf("aaaaaaaaa\n");
 	map->text->north->img_ptr = mlx_xpm_file_to_image(map->mlx_ptr,
 			map->info->north_path, &map->text->north->width,
 			&map->text->north->height);
@@ -30,7 +32,11 @@ void    load_textures(t_map *map)
 	map->text->north->addr = mlx_get_data_addr(map->text->north->img_ptr,
 			&map->text->north->bits_per_pixel,
 			&map->text->north->line_length, &map->text->north->endian);
+	printf("DEBUG: exiting load_north_texture\n");
+}
 
+void load_south_texture(t_map *map)
+{
 	map->text->south = (t_data_img *)malloc(sizeof(t_data_img));
 	if (!map->text->south)
 		exit_error("Error allocating memory for South texture\n", map);
@@ -42,7 +48,10 @@ void    load_textures(t_map *map)
 	map->text->south->addr = mlx_get_data_addr(map->text->south->img_ptr,
 			&map->text->south->bits_per_pixel,
 			&map->text->south->line_length, &map->text->south->endian);
+}
 
+void load_east_texture(t_map *map)
+{
 	map->text->east = (t_data_img *)malloc(sizeof(t_data_img));
 	if (!map->text->east)
 		exit_error("Error allocating memory for East texture\n", map);
@@ -54,7 +63,10 @@ void    load_textures(t_map *map)
 	map->text->east->addr = mlx_get_data_addr(map->text->east->img_ptr,
 			&map->text->east->bits_per_pixel,
 			&map->text->east->line_length, &map->text->east->endian);
+}
 
+void load_west_texture(t_map *map)
+{
 	map->text->west = (t_data_img *)malloc(sizeof(t_data_img));
 	if (!map->text->west)
 		exit_error("Error allocating memory for West texture\n", map);
@@ -66,5 +78,19 @@ void    load_textures(t_map *map)
 	map->text->west->addr = mlx_get_data_addr(map->text->west->img_ptr,
 			&map->text->west->bits_per_pixel,
 			&map->text->west->line_length, &map->text->west->endian);
-	printf("DEBUG: texturessss\n");
+}
+
+void	load_textures(t_map *map)
+{
+	printf("DEBUG: entering load_textures\n");
+	if (!map || !map->text || !map->info)
+	{
+		printf("NULL pointer vishhh\n");
+		exit(1);
+	}
+	load_north_texture(map);
+	// load_south_texture(map);
+	// load_east_texture(map);
+	// load_west_texture(map);
+	printf("DEBUG: texturessss finished\n");
 }
