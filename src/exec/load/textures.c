@@ -6,23 +6,19 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 15:48:14 by diego             #+#    #+#             */
-/*   Updated: 2025/07/26 19:21:56 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/07/26 19:36:23 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/cub3d.h"
 
-int rgb_to_int(int r, int g, int b)
-{
-	return ((r << 16) | (g << 8) | b);
-}
-
-void load_north_texture(t_map *map)
+void	load_north_texture(t_map *map)
 {
 	printf("DEBUG: entering load_north_texture\n");
 	map->text->north = (t_data_img *)malloc(sizeof(t_data_img));
 	if (!map->text->north)
 		exit_error("Error allocating memory for North texture\n", map);
+	printf("DEBUG: north texture from path: [%s]\n", map->info->north_path);
 	printf("aaaaaaaaa\n");
 	map->text->north->img_ptr = mlx_xpm_file_to_image(map->mlx_ptr,
 			map->info->north_path, &map->text->north->width,
@@ -35,7 +31,7 @@ void load_north_texture(t_map *map)
 	printf("DEBUG: exiting load_north_texture\n");
 }
 
-void load_south_texture(t_map *map)
+void	load_south_texture(t_map *map)
 {
 	map->text->south = (t_data_img *)malloc(sizeof(t_data_img));
 	if (!map->text->south)
@@ -50,7 +46,7 @@ void load_south_texture(t_map *map)
 			&map->text->south->line_length, &map->text->south->endian);
 }
 
-void load_east_texture(t_map *map)
+void	load_east_texture(t_map *map)
 {
 	map->text->east = (t_data_img *)malloc(sizeof(t_data_img));
 	if (!map->text->east)
@@ -65,7 +61,7 @@ void load_east_texture(t_map *map)
 			&map->text->east->line_length, &map->text->east->endian);
 }
 
-void load_west_texture(t_map *map)
+void	load_west_texture(t_map *map)
 {
 	map->text->west = (t_data_img *)malloc(sizeof(t_data_img));
 	if (!map->text->west)
@@ -89,8 +85,8 @@ void	load_textures(t_map *map)
 		exit(1);
 	}
 	load_north_texture(map);
-	// load_south_texture(map);
-	// load_east_texture(map);
-	// load_west_texture(map);
+	load_south_texture(map);
+	load_east_texture(map);
+	load_west_texture(map);
 	printf("DEBUG: texturessss finished\n");
 }

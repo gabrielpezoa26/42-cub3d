@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 02:16:13 by diego             #+#    #+#             */
-/*   Updated: 2025/07/25 15:17:10 by diego            ###   ########.fr       */
+/*   Updated: 2025/07/26 19:35:57 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ static bool	prepare_and_validate_fill(t_map *map, int ***temp_map_ptr)
 		return (false);
 	}
 	if (!flood_fill_recursive(&map, *temp_map_ptr,
-		player_start_copy.x, player_start_copy.y))
-		{
-			free_matrix(*temp_map_ptr, map->rows_amount);
-			return (false);
-		}
+			player_start_copy.x, player_start_copy.y))
+	{
+		free_matrix(*temp_map_ptr, map->rows_amount);
+		return (false);
+	}
 	return (true);
 }
 

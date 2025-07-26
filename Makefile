@@ -85,6 +85,6 @@ certo: all
 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --suppressions=$(SUPP) ./$(NAME) mapas/certo.cub
 
 run: all
-	./$(NAME) map.cub
+	./$(NAME) mapas/certo.cub
 
 .PHONY: all clean fclean re val run
