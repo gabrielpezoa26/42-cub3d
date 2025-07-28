@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 15:10:21 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/28 16:19:40 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/07/28 17:09:12 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,6 @@ static void	free_textures(void *mlx_ptr, t_texture *textures)
 	free_single_texture(mlx_ptr, textures->west);
 	free(textures);
 }
-
-// void	free_map(t_map **map)
-// {
-// 	if ((*map)->matrix)
-// 		free_matrix((*map)->matrix, (*map)->rows_amount);
-// 	if ((*map)->pov)
-// 		free((*map)->pov);
-// 	if ((*map)->info)
-// 		free_info((*map)->info);
-// 	free((*map));
-// }
 
 void	free_map(t_map **map)
 {

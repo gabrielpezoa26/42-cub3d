@@ -1,12 +1,3 @@
-26/07
-
-o segfault q tava dando era no nosso codigo mesmo, tinha q alocar
-memora pro 't_texture'
+28/07
 
 falta:
-    ta dando erro no load_textures, temos q ver pq q ta caindo nesse erro
-        (acho q eh o caminho ou o conteúdo do arquivo em si)
-        if (!map->text->north->img_ptr)
-            exit_error("Error loading texture NO\n", map);
-
-    free no textures

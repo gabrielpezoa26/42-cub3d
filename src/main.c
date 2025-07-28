@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 18:22:43 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/26 19:34:59 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/07/28 18:17:42 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,18 @@ static void	execution(t_map *map)
 	init_textures(map);
 	map->mlx_ptr = mlx_init();
 	map->window_ptr = mlx_new_window(map->mlx_ptr, WIDTH, HEIGHT, TITLE);
-	map->img_ptr = mlx_new_image(map->window_ptr, WIDTH, HEIGHT);
+
+	map->mangoloko = ft_calloc(1, sizeof(t_data_img));
+	if (!map->mangoloko)
+		exit_error("Error allocating memory for main image struct\n", map);
+
+	map->mangoloko->img_ptr = mlx_new_image(map->mlx_ptr, WIDTH, HEIGHT);
+	map->mangoloko->addr = mlx_get_data_addr(map->mangoloko->img_ptr,
+			&map->mangoloko->bits_per_pixel,
+			&map->mangoloko->line_length, &map->mangoloko->endian);
+	printf("DEBUG: deu boa\n");
 	load_textures(map);
-	printf("DEBUG: finish\n");
+	printf("DEBUG: execution() -> finish\n");
 }
 
 int	main(int ac, char **av)
@@ -53,5 +62,6 @@ int	main(int ac, char **av)
 	}
 	if (map)
 		free_map(&map);
+	printf("DEBUG: main() -> finish\n");
 	return (0);
 }

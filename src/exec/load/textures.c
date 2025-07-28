@@ -6,13 +6,13 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 15:48:14 by diego             #+#    #+#             */
-/*   Updated: 2025/07/28 16:19:53 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/07/28 17:38:14 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/cub3d.h"
 
-void	load_north_texture(t_map *map)
+static void	load_north_texture(t_map *map)
 {
 	printf("DEBUG: entering load_north_texture\n");
 	map->text->north = (t_data_img *)malloc(sizeof(t_data_img));
@@ -26,10 +26,13 @@ void	load_north_texture(t_map *map)
 	map->text->north->addr = mlx_get_data_addr(map->text->north->img_ptr,
 			&map->text->north->bits_per_pixel,
 			&map->text->north->line_length, &map->text->north->endian);
-	printf("DEBUG: exiting load_north_texture\n");
+	printf("DEBUG: img_ptr: %p\n", map->text->north->img_ptr);
+	printf("DEBUG: BPP:  %d\n", map->text->north->bits_per_pixel);
+	printf("DEBUG: line_length: %d\n", map->text->north->line_length);
+	printf("DEBUG: endian: %d\n", map->text->north->endian);
 }
 
-void	load_south_texture(t_map *map)
+static void	load_south_texture(t_map *map)
 {
 	map->text->south = (t_data_img *)malloc(sizeof(t_data_img));
 	if (!map->text->south)
@@ -44,7 +47,7 @@ void	load_south_texture(t_map *map)
 			&map->text->south->line_length, &map->text->south->endian);
 }
 
-void	load_east_texture(t_map *map)
+static void	load_east_texture(t_map *map)
 {
 	map->text->east = (t_data_img *)malloc(sizeof(t_data_img));
 	if (!map->text->east)
@@ -59,7 +62,7 @@ void	load_east_texture(t_map *map)
 			&map->text->east->line_length, &map->text->east->endian);
 }
 
-void	load_west_texture(t_map *map)
+static void	load_west_texture(t_map *map)
 {
 	map->text->west = (t_data_img *)malloc(sizeof(t_data_img));
 	if (!map->text->west)
@@ -86,5 +89,5 @@ void	load_textures(t_map *map)
 	load_south_texture(map);
 	load_east_texture(map);
 	load_west_texture(map);
-	printf("DEBUG: texturessss finished\n");
+	printf("DEBUG: textures() -> finish\n");
 }

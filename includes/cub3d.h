@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 18:22:52 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/28 16:15:41 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/07/28 18:00:01 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ typedef struct s_map
 	int			**matrix;
 	void		*mlx_ptr;
 	void		*window_ptr;
-	void		*img_ptr;
+	t_data_img	*mangoloko;
 	t_point		*pov;
 	t_info		*info;
 	t_texture	*text;
