@@ -8,3 +8,5 @@ falta:
         (acho q eh o caminho ou o conteúdo do arquivo em si)
         if (!map->text->north->img_ptr)
             exit_error("Error loading texture NO\n", map);
+
+    free no textures

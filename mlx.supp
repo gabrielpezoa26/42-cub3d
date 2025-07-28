@@ -1,0 +1,60 @@
+# Suppress uninitialized byte errors from libxcb/libX11
+{
+   <X11-writev-uninit>
+   Memcheck:Cond
+   ...
+   fun:writev
+   ...
+   fun:xcb_writev
+   ...
+}
+
+# Suppress all memory leaks originating from XOpenDisplay and mlx_init
+{
+   <X11-leaks-calloc>
+   Memcheck:Leak
+   match-leak-kinds: all
+   ...
+   fun:calloc
+   ...
+   fun:XOpenDisplay
+   ...
+   fun:mlx_init
+   ...
+}
+
+{
+   <X11-leaks-malloc>
+   Memcheck:Leak
+   match-leak-kinds: all
+   ...
+   fun:malloc
+   ...
+   fun:XOpenDisplay
+   ...
+   fun:mlx_init
+   ...
+}
+
+{
+   <X11-leaks-realloc>
+   Memcheck:Leak
+   match-leak-kinds: all
+   ...
+   fun:realloc
+   ...
+   fun:XOpenDisplay
+   ...
+   fun:mlx_init
+   ...
+}
+
+# Suppress leaks from mlx_new_window
+{
+   <MLX-new-window-leaks>
+   Memcheck:Leak
+   match-leak-kinds: all
+   ...
+   fun:mlx_new_window
+   ...
+}

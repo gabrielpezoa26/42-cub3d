@@ -1,6 +1,6 @@
 *.o
+a.out
+
 cub3D
 .vscode/
 includes/libft/libft.a
-
-MLX42/build/
