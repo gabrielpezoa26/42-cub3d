@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 15:48:14 by diego             #+#    #+#             */
-/*   Updated: 2025/07/26 19:36:23 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/07/28 16:19:53 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ void	load_north_texture(t_map *map)
 	map->text->north = (t_data_img *)malloc(sizeof(t_data_img));
 	if (!map->text->north)
 		exit_error("Error allocating memory for North texture\n", map);
-	printf("DEBUG: north texture from path: [%s]\n", map->info->north_path);
-	printf("aaaaaaaaa\n");
 	map->text->north->img_ptr = mlx_xpm_file_to_image(map->mlx_ptr,
 			map->info->north_path, &map->text->north->width,
 			&map->text->north->height);

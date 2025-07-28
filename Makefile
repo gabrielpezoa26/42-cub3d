@@ -35,6 +35,7 @@ SRC = $(SRC_DIR)/main.c \
       $(MAP_DIR)/flood_fill.c \
       $(MAP_DIR)/flood_fill_utils.c \
       $(UTILS_DIR)/cleanup.c \
+      $(UTILS_DIR)/cleanup_utils.c \
       $(UTILS_DIR)/utils.c \
       $(SAVING_DIR)/textures.c
 

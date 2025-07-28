@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 18:22:52 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/26 19:36:44 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/07/28 16:15:41 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ void	init_info(char *file_name, t_info **info);
 void	free_map(t_map **map);
 void	free_matrix(int **matrix, int height);
 void	exit_error(char *str, t_map *map);
+void	free_single_texture(void *mlx_ptr, t_data_img *texture_img);
 
 /*---------ROSE--------------*/
 void	init_south(t_info *info, int *i, char *line);
