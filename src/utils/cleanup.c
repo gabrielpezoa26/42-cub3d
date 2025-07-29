@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 15:10:21 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/28 20:38:20 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/07/29 14:49:48 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ void	free_map(t_map **map)
 		free_matrix((*map)->matrix, (*map)->rows_amount);
 	if ((*map)->pov)
 		free((*map)->pov);
+	if ((*map)->player)
+		free((*map)->player);
 	if ((*map)->info)
 		free_info((*map)->info);
 	if ((*map)->text)

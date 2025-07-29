@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 20:41:15 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/28 21:59:20 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/07/29 15:55:14 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ void	init_textures(t_map *map)
 {
 	map->text = ft_calloc(1, sizeof(t_texture));
 	if (!map->text)
-		exit_error("Error allocating memory for textures struct\n", map);
+		exit_error("Error allocating memory for textures struct", map);
 }
 
 void	init_data_img(t_map *map)
 {
 	map->img = ft_calloc(1, sizeof(t_data_img));
 	if (!map->img)
-		exit_error("Error allocating memory for main image struct\n", map);
+		exit_error("Error allocating memory for main image struct", map);
 }

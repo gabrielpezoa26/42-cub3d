@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 18:22:43 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/28 21:58:43 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/07/29 14:46:25 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static void	execution(t_map *map)
 {
 	init_graphics(map);
 	load_textures(map);
+	init_player(map);
 	printf("DEBUG: execution() -> finished\n");
 }
 
