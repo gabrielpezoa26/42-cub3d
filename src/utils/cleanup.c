@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 15:10:21 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/28 17:09:12 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/07/28 20:38:20 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ void	free_map(t_map **map)
 		free_info((*map)->info);
 	if ((*map)->text)
 		free_textures((*map)->mlx_ptr, (*map)->text);
+	if ((*map)->img)
+		free_single_texture((*map)->mlx_ptr, (*map)->img);
 	if ((*map)->window_ptr)
 		mlx_destroy_window((*map)->mlx_ptr, (*map)->window_ptr);
 	if ((*map)->mlx_ptr)

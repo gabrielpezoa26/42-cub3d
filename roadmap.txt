@@ -1,50 +1,6 @@
-1. Parsing e Preparação dos Dados (Lógica em C)
-Objetivo: Ler o arquivo .cub e extrair todas as informações de configuração para suas estruturas de dados.
-
-Detalhes:
-
-Esta etapa não usa a minilibx. É um trabalho de manipulação de arquivos e strings em C.
-
-Leia os caminhos das quatro texturas (NO, SO, WE, EA) e armazene-os como strings (char *).
-
-Leia os valores RGB para o chão (F) e o teto (C).
-
-Conversão de Cor: Crie uma função para converter os três valores int (R, G, B) em um único int que representa a cor. A minilibx trabalha com cores empacotadas em um único inteiro. A fórmula comum é (r << 16) + (g << 8) + b.
-
----------------------------------------------------------------
-
-2. Inicialização da Janela e Gráficos (minilibx)
-Objetivo: Preparar o ambiente gráfico para renderizar o jogo.
-
-Detalhes:
-
-mlx_init: Use esta função primeiro para estabelecer a conexão com o sistema gráfico. Ela retorna um ponteiro void * que você usará em quase todas as outras chamadas.
-
-mlx_new_window: Use-a para criar a janela onde o jogo será exibido. Ela também retorna um ponteiro void *.
-
-mlx_new_image: Crie uma imagem em memória que servirá como seu "buffer" de desenho. É aqui que você desenhará cada frame antes de exibi-lo na tela, para evitar cintilação (flickering).
-
-mlx_get_data_addr: Passo crucial. Use esta função na imagem que você acabou de criar. Ela te dará um ponteiro (char *addr) para o início dos dados dos pixels, além de informações como bits_per_pixel, line_length e endian, que são essenciais para você poder desenhar na imagem manualmente.
-
----------------------------------------------------------------
-
-3. Carregamento das Texturas (minilibx)
-Objetivo: Carregar os arquivos de imagem das paredes para a memória.
-
-Detalhes:
-
-Para cada um dos quatro caminhos de textura que você extraiu:
-
-mlx_xpm_file_to_image: Use esta função para carregar o arquivo .xpm e criar um recurso de imagem na memória.
-
-mlx_get_data_addr: Assim como fez para a imagem principal, use esta função em cada imagem de textura para obter o ponteiro para os dados brutos dos pixels. Você precisará dessas informações para ler a cor de cada pixel da textura durante a renderização.
-
----------------------------------------------------------------
 
 4. Configuração do Jogador e Câmera (Lógica Matemática)
 Objetivo: Definir a posição e o campo de visão iniciais do jogador.
-
-Detalhes:
 
 Esta etapa é puramente matemática e não usa funções da minilibx.
 
@@ -53,6 +9,40 @@ Use a posição inicial (x, y) e o caractere de direção (N, S, E, W) que você
 Defina o vetor de direção do jogador (por exemplo, dirX = 0, dirY = -1 para 'N').
 
 Defina o plano da câmera, que é perpendicular ao vetor de direção e controla a largura do campo de visão (FOV). Por exemplo, para 'N', o plano da câmera poderia ser planeX = 0.66, planeY = 0.
+
+        Estrutura de Dados: O ideal é adicionar novas variáveis à sua struct s_map (ou criar uma nova struct s_player) para guardar a posição, a direção e o plano da câmera. Essas variáveis devem ser do tipo double ou float para permitir movimentos suaves e cálculos precisos.
+
+        posX, posY: A posição do jogador no mapa (você já tem isso, mas agora em ponto flutuante).
+
+        dirX, dirY: O vetor de direção, que representa para onde o jogador está olhando. É um vetor unitário (comprimento 1).
+
+        planeX, planeY: O vetor do plano da câmera. Ele é perpendicular ao vetor de direção e define a largura do seu campo de visão (FOV). Um valor comum para a magnitude do plano da câmera é 0.66, que cria um FOV de 66 graus, um valor confortável.
+
+        Inicialização: Com base na letra de início (N, S, E, W) que você leu do mapa:
+
+        Se for 'N' (Norte):
+
+        dirX = 0.0, dirY = -1.0 (apontando para o "topo" do mapa).
+
+        planeX = 0.66, planeY = 0.0 (o plano da câmera se estende horizontalmente).
+
+        Se for 'S' (Sul):
+
+        dirX = 0.0, dirY = 1.0.
+
+        planeX = -0.66, planeY = 0.0.
+
+        Se for 'E' (Leste):
+
+        dirX = 1.0, dirY = 0.0.
+
+        planeX = 0.0, planeY = 0.66.
+
+        Se for 'W' (Oeste):
+
+        dirX = -1.0, dirY = 0.0.
+
+        planeX = 0.0, planeY = -0.66.
 
 ---------------------------------------------------------------
 

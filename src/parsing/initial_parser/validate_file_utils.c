@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 14:50:23 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/25 15:36:06 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/07/28 20:39:52 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ bool	is_only_wspace(char *line)
 	return (false);
 }
 
-bool	map_before(char *file_name)
+bool	is_map_before(char *file_name)
 {
 	char	*line;
 	int		count;

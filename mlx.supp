@@ -1,4 +1,3 @@
-# Suppress uninitialized byte errors from libxcb/libX11
 {
    <X11-writev-uninit>
    Memcheck:Cond
@@ -9,7 +8,6 @@
    ...
 }
 
-# Suppress all memory leaks originating from XOpenDisplay and mlx_init
 {
    <X11-leaks-calloc>
    Memcheck:Leak
@@ -72,6 +70,58 @@
    fun:XWindowEvent
    fun:mlx_int_wait_first_expose
    fun:mlx_new_window
+   fun:execution
+   fun:main
+}
+
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Param
+   writev(vector[0])
+   fun:writev
+   obj:/usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0
+   obj:/usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0
+   fun:xcb_writev
+   fun:_XSend
+   fun:_XReadEvents
+   fun:XWindowEvent
+   fun:mlx_int_wait_first_expose
+   fun:mlx_new_window
+   fun:execution
+   fun:main
+}
+
+{
+   <X11-writev-uninit-custom>
+   Memcheck:Param
+   writev(vector[0])
+   fun:writev
+   obj:/usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0
+   obj:/usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0
+   fun:xcb_writev
+   fun:_XSend
+   fun:_XReadEvents
+   fun:XWindowEvent
+   fun:mlx_int_wait_first_expose
+   fun:mlx_new_window
+   fun:execution
+   fun:main
+}
+
+{
+   <X11-writev-uninit-custom>
+   Memcheck:Param
+   writev(vector[0])
+   fun:writev
+   obj:/usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0
+   obj:/usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0
+   fun:xcb_writev
+   fun:_XSend
+   fun:_XReadEvents
+   fun:XWindowEvent
+   fun:mlx_int_wait_first_expose
+   fun:mlx_new_window
+   fun:init_graphics
    fun:execution
    fun:main
 }

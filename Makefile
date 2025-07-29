@@ -15,6 +15,7 @@ SRC_DIR = src
 PARSER_DIR = $(SRC_DIR)/parsing
 EXEC_DIR = $(SRC_DIR)/exec
 SAVING_DIR = $(EXEC_DIR)/load
+MATH_DIR = $(EXEC_DIR)/math
 INITIAL_PARS_DIR = $(PARSER_DIR)/initial_parser
 RGB_DIR = $(PARSER_DIR)/rgb
 MAP_DIR = $(PARSER_DIR)/map
@@ -37,7 +38,10 @@ SRC = $(SRC_DIR)/main.c \
       $(UTILS_DIR)/cleanup.c \
       $(UTILS_DIR)/cleanup_utils.c \
       $(UTILS_DIR)/utils.c \
-      $(SAVING_DIR)/textures.c
+      $(UTILS_DIR)/exec_utils.c \
+      $(SAVING_DIR)/textures.c \
+      $(SAVING_DIR)/textures_utils.c \
+      $(MATH_DIR)/math.c
 
 OBJ_DIR = objects
 OBJS = $(SRC:%.c=$(OBJ_DIR)/%.o)
