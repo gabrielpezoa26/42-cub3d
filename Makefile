@@ -41,7 +41,8 @@ SRC = $(SRC_DIR)/main.c \
 	$(UTILS_DIR)/exec_utils.c \
 	$(SAVING_DIR)/textures.c \
 	$(SAVING_DIR)/textures_utils.c \
-	$(MATH_DIR)/math.c
+	$(MATH_DIR)/math.c \
+	$(MATH_DIR)/ray_casting.c
 
 OBJ_DIR = objects
 OBJS = $(SRC:%.c=$(OBJ_DIR)/%.o)

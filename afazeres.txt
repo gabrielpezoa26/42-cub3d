@@ -1,5 +1,13 @@
-28/07
+29/07
 
-passo 4 do roadmap
+passo 5 do roadmap
 
-arrumar leak qdo tem duas letras no mapa
+norminette math.c
+arrumar leak qdo tem duas letras no mapa, ex:
+
+111111
+1001N1
+101001
+110S01
+111111
+
