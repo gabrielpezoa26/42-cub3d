@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 18:22:52 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/29 19:49:02 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/07/29 20:08:33 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,9 @@ typedef struct s_player
 {
 	double	position_x;
 	double	position_y;
-	double	dir_x;      //angulo da camera na horizontal
+	double	dir_x;
 	double	dir_y;
-	double	plane_x;  //angulo da camera na vertical
+	double	plane_x;
 	double	plane_y;
 }	t_player;
 
@@ -147,6 +147,12 @@ int		**dup_int_matrix(t_map *map);
 void	print_matrix(int **matrix, int cols, int rows);
 
 /*--------------------EXEC------------------*/
+
+/*--------------------EXEC_UTILS------------------*/
+void	set_north_values(t_map *map);
+void	set_south_values(t_map *map);
+void	set_east_values(t_map *map);
+void	set_west_values(t_map *map);
 
 /*--------------LOAD_TEXT--------------------*/
 void	load_textures(t_map *map);
