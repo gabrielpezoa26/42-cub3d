@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
+/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 13:54:07 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/29 18:12:05 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/07/24 15:41:22 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,6 @@ bool	parse_input(int ac, char **av, t_info **info, t_map **map)
 	if (!is_valid_file(av[1], info))
 		return (false);
 	if (!is_valid_map(av[1], map, info))
-	{
-		free_info(*info);
 		return (false);
-	}
 	return (true);
 }
