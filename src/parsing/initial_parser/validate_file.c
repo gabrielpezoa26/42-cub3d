@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_file.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 00:46:41 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/24 18:00:09 by diego            ###   ########.fr       */
+/*   Updated: 2025/07/28 20:39:52 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ bool	is_valid_file(char *file_name, t_info **info)
 {
 	if (is_empty_file(file_name))
 		return (false);
-	if (!map_before(file_name))
+	if (!is_map_before(file_name))
 		return (false);
 	init_info(file_name, info);
 	if (!verify_info(info))

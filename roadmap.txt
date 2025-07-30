@@ -1,42 +1,3 @@
-2. Inicialização da Janela e Gráficos (minilibx)
-Objetivo: Preparar o ambiente gráfico para renderizar o jogo.
-
-Detalhes:
-
-mlx_init: Use esta função primeiro para estabelecer a conexão com o sistema gráfico. Ela retorna um ponteiro void * que você usará em quase todas as outras chamadas.
-
-mlx_new_window: Use-a para criar a janela onde o jogo será exibido. Ela também retorna um ponteiro void *.
-
-mlx_new_image: Crie uma imagem em memória que servirá como seu "buffer" de desenho. É aqui que você desenhará cada frame antes de exibi-lo na tela, para evitar cintilação (flickering).
-
-mlx_get_data_addr: Passo crucial. Use esta função na imagem que você acabou de criar. Ela te dará um ponteiro (char *addr) para o início dos dados dos pixels, além de informações como bits_per_pixel, line_length e endian, que são essenciais para você poder desenhar na imagem manualmente.
-
----------------------------------------------------------------------------------------------
-
-3. Carregamento das Texturas (minilibx)
-Objetivo: Carregar os arquivos de imagem das paredes para a memória.
-
-Detalhes:
-
-Para cada um dos quatro caminhos de textura que você extraiu:
-
-mlx_xpm_file_to_image: Use esta função para carregar o arquivo .xpm e criar um recurso de imagem na memória.
-
-mlx_get_data_addr: Assim como fez para a imagem principal, use esta função em cada imagem de textura para obter o ponteiro para os dados brutos dos pixels. Você precisará dessas informações para ler a cor de cada pixel da textura durante a renderização.
-
-4. Configuração do Jogador e Câmera (Lógica Matemática)
-Objetivo: Definir a posição e o campo de visão iniciais do jogador.
-
-Detalhes:
-
-Esta etapa é puramente matemática e não usa funções da minilibx.
-
-Use a posição inicial (x, y) e o caractere de direção (N, S, E, W) que você extraiu do mapa.
-
-Defina o vetor de direção do jogador (por exemplo, dirX = 0, dirY = -1 para 'N').
-
-Defina o plano da câmera, que é perpendicular ao vetor de direção e controla a largura do campo de visão (FOV). Por exemplo, para 'N', o plano da câmera poderia ser planeX = 0.66, planeY = 0.
-
 5. Implementação do Raycasting e Renderização
 Objetivo: Desenhar o mundo 3D na sua imagem de buffer.
 
@@ -66,6 +27,9 @@ Desenhe uma linha vertical para o chão com a cor apropriada.
 
 Exibição na Tela: Após desenhar o frame inteiro na sua imagem de buffer, chame mlx_put_image_to_window para copiar o buffer para a janela de uma só vez.
 
+---------------------------------------------------------------
+
+
 6. Mapeamento de Texturas (Lógica Matemática)
 Objetivo: Aplicar a textura correta na fatia de parede desenhada.
 
@@ -79,6 +43,8 @@ Use wallX para encontrar a coluna da textura (texX) a ser usada.
 
 Ao desenhar a fatia vertical da parede na tela, para cada pixel, calcule a coordenada Y correspondente na textura (texY) e copie a cor da textura para a sua imagem de buffer.
 
+---------------------------------------------------------------
+
 7. Controles do Jogador (minilibx)
 Objetivo: Permitir que o jogador se mova pelo cenário.
 
@@ -91,6 +57,8 @@ Dentro da função de hook, verifique o keycode da tecla pressionada:
 Movimento (W, S, A, D): Altere as coordenadas posX e posY do jogador, sempre verificando se a nova posição não está dentro de uma parede (detecção de colisão).
 
 Rotação (Setas ←, →): Gire o vetor de direção e o plano da câmera do jogador usando uma matriz de rotação.
+
+---------------------------------------------------------------
 
 8. Gerenciamento de Memória e Encerramento (minilibx)
 Objetivo: Sair do programa de forma limpa, liberando todos os recursos.

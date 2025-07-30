@@ -6,7 +6,7 @@
 /*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 15:10:21 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/28 16:57:48 by diego            ###   ########.fr       */
+/*   Updated: 2025/07/29 22:31:31 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,14 @@ void	free_map(t_map **map)
 		free_matrix((*map)->matrix, (*map)->rows_amount);
 	if ((*map)->pov)
 		free((*map)->pov);
+	if ((*map)->player)
+		free((*map)->player);
 	if ((*map)->info)
 		free_info((*map)->info);
 	if ((*map)->text)
 		free_textures((*map)->mlx_ptr, (*map)->text);
+	if ((*map)->img)
+		free_single_texture((*map)->mlx_ptr, (*map)->img);
 	if ((*map)->window_ptr)
 		mlx_destroy_window((*map)->mlx_ptr, (*map)->window_ptr);
 	if ((*map)->mlx_ptr)

@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 18:22:52 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/28 16:15:41 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/07/29 16:15:07 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,16 @@ typedef struct s_texture
 	t_data_img	*east;
 }	t_texture;
 
+typedef struct s_player
+{
+	double	position_x;
+	double	position_y;
+	double	dir_x;      //angulo da camera na horizontal
+	double	dir_y;
+	double	plane_x;  //angulo da camera na vertical
+	double	plane_y;
+}	t_player;
+
 typedef struct s_map
 {
 	int			rows_amount;
@@ -80,10 +90,12 @@ typedef struct s_map
 	int			**matrix;
 	void		*mlx_ptr;
 	void		*window_ptr;
-	void		*img_ptr;
+	char		letter;
+	t_data_img	*img;
 	t_point		*pov;
 	t_info		*info;
 	t_texture	*text;
+	t_player	*player;
 }	t_map;
 
 /*---------PARSER---------*/
@@ -91,15 +103,16 @@ bool	parse_input(int ac, char **av, t_info **info, t_map **map);
 bool	is_valid_char(int c);
 bool	is_valid_extension(const char *filename);
 bool	is_valid_file(char *av, t_info **info);
-bool	parse_textures(t_map *map, int fd);
-bool	parse_map(t_map *map);
-
-bool	map_before(char *file_name);
+bool	is_map_before(char *file_name);
 void	print_and_exit(char *str);
 
 /*---------UTILS---------*/
 bool	is_wspace(char input);
 bool	is_only_wspace(char *line);
+void	init_textures(t_map *map);
+void	init_data_img(t_map *map);
+void	init_player(t_map *map);
+void	convert_rgb_colors(t_map *map);
 
 /*---------INIT---------*/
 void	init_info(char *file_name, t_info **info);
@@ -137,5 +150,9 @@ void	print_matrix(int **matrix, int cols, int rows);
 
 /*--------------LOAD_TEXT--------------------*/
 void	load_textures(t_map *map);
+void	load_north_texture(t_map *map);
+void	load_south_texture(t_map *map);
+void	load_east_texture(t_map *map);
+void	load_west_texture(t_map *map);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 22:27:10 by diego             #+#    #+#             */
-/*   Updated: 2025/07/29 16:03:32 by diego            ###   ########.fr       */
+/*   Updated: 2025/07/29 22:31:18 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,28 @@ static char	*dg_strcmp(char c)
 		return ("2");
 }
 
-static bool	search_the_letter(char *tmp)
+static bool	search_the_letter(char *tmp, t_map *map)
 {
 	if (ft_strcmp(tmp, "78") == 0)
+	{
+		map->letter = 'N';
 		return (true);
+	}
 	else if (ft_strcmp(tmp, "83") == 0)
+	{
+		map->letter = 'S';
 		return (true);
+	}
 	else if (ft_strcmp(tmp, "87") == 0)
+	{
+		map->letter = 'W';
 		return (true);
+	}
 	else if (ft_strcmp(tmp, "69") == 0)
+	{
+		map->letter = 'E';
 		return (true);
+	}
 	return (false);
 }
 
@@ -60,7 +72,7 @@ static void	insert_the_values(char *line, t_map *map, int i)
 		else
 		{
 			tmp = ft_strdup(dg_strcmp(line[j]));
-			if (search_the_letter(tmp))
+			if (search_the_letter(tmp, map))
 			{
 				map->pov = ft_calloc(1, sizeof(map->pov));
 				map->pov->x = j;
@@ -93,6 +105,7 @@ void	fill_the_matrix(char *file_name, t_map *map)
 		free(line);
 		line = get_next_line(fd);
 	}
+	printf("DEBUG: map->letter:  %c\n", map->letter);
 	close(fd);
 }
 

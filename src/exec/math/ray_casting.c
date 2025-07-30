@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   textures.c                                         :+:      :+:    :+:   */
+/*   ray_casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/24 15:48:14 by diego             #+#    #+#             */
-/*   Updated: 2025/07/28 20:39:13 by gcesar-n         ###   ########.fr       */
+/*   Created: 2025/07/29 16:31:47 by gcesar-n          #+#    #+#             */
+/*   Updated: 2025/07/29 16:39:25 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
-void	load_textures(t_map *map)
-{
-	if (!map || !map->text || !map->info)
-	{
-		printf("NULL pointer vishhh\n");
-		exit(1);
-	}
-	load_north_texture(map);
-	load_south_texture(map);
-	load_east_texture(map);
-	load_west_texture(map);
-}
+// bool game_loop(t_map *map)
+// {
+// 	printf("DEBUG: gameloooooooop\n");
+// }

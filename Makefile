@@ -15,6 +15,7 @@ SRC_DIR = src
 PARSER_DIR = $(SRC_DIR)/parsing
 EXEC_DIR = $(SRC_DIR)/exec
 SAVING_DIR = $(EXEC_DIR)/load
+MATH_DIR = $(EXEC_DIR)/math
 INITIAL_PARS_DIR = $(PARSER_DIR)/initial_parser
 RGB_DIR = $(PARSER_DIR)/rgb
 MAP_DIR = $(PARSER_DIR)/map
@@ -22,22 +23,26 @@ CARDINAL_DIR = $(PARSER_DIR)/cardinal_points
 UTILS_DIR = $(SRC_DIR)/utils
 
 SRC = $(SRC_DIR)/main.c \
-      $(INITIAL_PARS_DIR)/parser.c \
-      $(INITIAL_PARS_DIR)/parser_utils.c \
-      $(INITIAL_PARS_DIR)/validate_file.c \
-      $(INITIAL_PARS_DIR)/validate_file_utils.c \
-      $(INITIAL_PARS_DIR)/init.c \
-      $(CARDINAL_DIR)/rose_of_winds.c \
-      $(RGB_DIR)/rgb.c \
-      $(MAP_DIR)/map.c \
-      $(MAP_DIR)/matrix.c \
-      $(MAP_DIR)/matrix_utils.c \
-      $(MAP_DIR)/flood_fill.c \
-      $(MAP_DIR)/flood_fill_utils.c \
-      $(UTILS_DIR)/cleanup.c \
-      $(UTILS_DIR)/cleanup_utils.c \
-      $(UTILS_DIR)/utils.c \
-      $(SAVING_DIR)/textures.c
+	$(INITIAL_PARS_DIR)/parser.c \
+	$(INITIAL_PARS_DIR)/parser_utils.c \
+	$(INITIAL_PARS_DIR)/validate_file.c \
+	$(INITIAL_PARS_DIR)/validate_file_utils.c \
+	$(INITIAL_PARS_DIR)/init.c \
+	$(CARDINAL_DIR)/rose_of_winds.c \
+	$(RGB_DIR)/rgb.c \
+	$(MAP_DIR)/map.c \
+	$(MAP_DIR)/matrix.c \
+	$(MAP_DIR)/matrix_utils.c \
+	$(MAP_DIR)/flood_fill.c \
+	$(MAP_DIR)/flood_fill_utils.c \
+	$(UTILS_DIR)/cleanup.c \
+	$(UTILS_DIR)/cleanup_utils.c \
+	$(UTILS_DIR)/utils.c \
+	$(UTILS_DIR)/exec_utils.c \
+	$(SAVING_DIR)/textures.c \
+	$(SAVING_DIR)/textures_utils.c \
+	$(MATH_DIR)/math.c \
+	$(MATH_DIR)/ray_casting.c
 
 OBJ_DIR = objects
 OBJS = $(SRC:%.c=$(OBJ_DIR)/%.o)
