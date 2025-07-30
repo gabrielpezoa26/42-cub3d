@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dteruya <dteruya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 18:22:43 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/29 22:54:56 by diego            ###   ########.fr       */
+/*   Updated: 2025/07/30 17:27:52 by dteruya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	init_graphics(t_map *map)
 {
-	init_textures(map);
+	init_texture_struct(map);
 	init_data_img(map);
 	map->mlx_ptr = mlx_init();
 	map->window_ptr = mlx_new_window(map->mlx_ptr, WIDTH, HEIGHT, TITLE);
@@ -25,13 +25,22 @@ static void	init_graphics(t_map *map)
 	printf("DEBUG: init_graphics()-> finished\n");
 }
 
+static bool	game_loop(t_map *map)
+{
+	(void)map;
+	printf("DEBUG: entering game_loop() \n");
+	// mlx_loop(map->mlx_ptr);
+	// seta os controles
+	// da free em tudo
+	printf("DEBUG: game_loop() -> finished\n");
+	return (true);
+}
+
 static void	execution(t_map *map)
 {
 	init_graphics(map);
-	load_textures(map);
+	init_textures(map);
 	init_player(map);
-	mlx_loop_hook(map->mlx_ptr, render, map);
-	mlx_loop(map->mlx_ptr);
 	printf("DEBUG: execution() -> finished\n");
 }
 

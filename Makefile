@@ -39,6 +39,7 @@ SRC = $(SRC_DIR)/main.c \
 	$(UTILS_DIR)/cleanup_utils.c \
 	$(UTILS_DIR)/utils.c \
 	$(UTILS_DIR)/exec_utils.c \
+	$(UTILS_DIR)/controls.c \
 	$(SAVING_DIR)/textures.c \
 	$(SAVING_DIR)/textures_utils.c \
 	$(SAVING_DIR)/init_exec.c \

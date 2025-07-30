@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dteruya <dteruya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/10 18:22:52 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/30 17:19:41 by dteruya          ###   ########.fr       */
+/*   Created: 2025/07/30 17:28:04 by dteruya           #+#    #+#             */
+/*   Updated: 2025/07/30 17:28:06 by dteruya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ void	print_and_exit(char *str);
 /*---------UTILS---------*/
 bool	is_wspace(char input);
 bool	is_only_wspace(char *line);
-void	init_textures(t_map *map);
+void	init_texture_struct(t_map *map);
 void	init_data_img(t_map *map);
 void	init_player(t_map *map);
 void	convert_rgb_colors(t_map *map);
@@ -176,7 +176,7 @@ void	set_east_values(t_map *map);
 void	set_west_values(t_map *map);
 
 /*--------------LOAD_TEXT--------------------*/
-void	load_textures(t_map *map);
+void	init_textures(t_map *map);
 void	load_north_texture(t_map *map);
 void	load_south_texture(t_map *map);
 void	load_east_texture(t_map *map);
