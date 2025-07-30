@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 20:41:15 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/29 15:55:14 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/07/30 14:45:35 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	convert_rgb_colors(t_map *map)
 	printf("DEBUG: Cor do teto convertida: %d\n", ceiling_color);
 }
 
-void	init_textures(t_map *map)
+void	init_texture_struct(t_map *map)
 {
 	map->text = ft_calloc(1, sizeof(t_texture));
 	if (!map->text)
