@@ -1,19 +1,3 @@
-1. Parsing e Preparação dos Dados (Lógica em C)
-Objetivo: Ler o arquivo .cub e extrair todas as informações de configuração para suas estruturas de dados.
-
-Detalhes:
-
-Esta etapa não usa a minilibx. É um trabalho de manipulação de arquivos e strings em C.
-
-Leia os caminhos das quatro texturas (NO, SO, WE, EA) e armazene-os como strings (char *).
-
-Leia os valores RGB para o chão (F) e o teto (C).
-
-Conversão de Cor: Crie uma função para converter os três valores int (R, G, B) em um único int que representa a cor. A minilibx trabalha com cores empacotadas em um único inteiro. A fórmula comum é (r << 16) + (g << 8) + b.
-
-
----------------------------------------------------------------
-
 2. Inicialização da Janela e Gráficos (minilibx)
 Objetivo: Preparar o ambiente gráfico para renderizar o jogo.
 
@@ -26,6 +10,8 @@ mlx_new_window: Use-a para criar a janela onde o jogo será exibido. Ela também
 mlx_new_image: Crie uma imagem em memória que servirá como seu "buffer" de desenho. É aqui que você desenhará cada frame antes de exibi-lo na tela, para evitar cintilação (flickering).
 
 mlx_get_data_addr: Passo crucial. Use esta função na imagem que você acabou de criar. Ela te dará um ponteiro (char *addr) para o início dos dados dos pixels, além de informações como bits_per_pixel, line_length e endian, que são essenciais para você poder desenhar na imagem manualmente.
+
+---------------------------------------------------------------------------------------------
 
 3. Carregamento das Texturas (minilibx)
 Objetivo: Carregar os arquivos de imagem das paredes para a memória.
