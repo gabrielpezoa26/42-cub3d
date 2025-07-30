@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
+/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 18:22:52 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/29 16:15:07 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/07/30 01:35:39 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,14 +73,36 @@ typedef struct s_texture
 	t_data_img	*east;
 }	t_texture;
 
+typedef struct s_ray
+{
+	double	cam_x;
+	double	ray_dir_x;
+	double	ray_dir_y;
+	int		map_x;
+	int		map_y;
+	double	delta_x;
+	double	delta_y;
+	int		step_x;
+	int		step_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	wall_dist;
+	int		start;
+	int		end;
+	int		line_height;
+	int		hit;
+	int		side;
+}	t_ray;
+
 typedef struct s_player
 {
 	double	position_x;
 	double	position_y;
-	double	dir_x;      //angulo da camera na horizontal
+	double	dir_x;
 	double	dir_y;
 	double	plane_x;  //angulo da camera na vertical
-	double	plane_y;
+	double	plane_y;  //angulo da camera na horizontal
+	t_ray	ray;
 }	t_player;
 
 typedef struct s_map
@@ -154,5 +176,8 @@ void	load_north_texture(t_map *map);
 void	load_south_texture(t_map *map);
 void	load_east_texture(t_map *map);
 void	load_west_texture(t_map *map);
+
+/*---------RENDER---------------*/
+int		render(void *param);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
+/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 18:22:43 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/29 14:46:25 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/07/29 22:54:56 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ static void	execution(t_map *map)
 	init_graphics(map);
 	load_textures(map);
 	init_player(map);
+	mlx_loop_hook(map->mlx_ptr, render, map);
+	mlx_loop(map->mlx_ptr);
 	printf("DEBUG: execution() -> finished\n");
 }
 
