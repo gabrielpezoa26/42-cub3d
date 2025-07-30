@@ -6,7 +6,7 @@
 /*   By: dteruya <dteruya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 18:22:43 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/30 17:27:52 by dteruya          ###   ########.fr       */
+/*   Updated: 2025/07/30 18:19:06 by dteruya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,22 +25,25 @@ static void	init_graphics(t_map *map)
 	printf("DEBUG: init_graphics()-> finished\n");
 }
 
-static bool	game_loop(t_map *map)
-{
-	(void)map;
-	printf("DEBUG: entering game_loop() \n");
-	// mlx_loop(map->mlx_ptr);
-	// seta os controles
-	// da free em tudo
-	printf("DEBUG: game_loop() -> finished\n");
-	return (true);
-}
+// static bool	game_loop(t_map *map)
+// {
+// 	(void)map;
+// 	printf("DEBUG: entering game_loop() \n");
+// 	// mlx_loop(map->mlx_ptr);
+// 	// raycasting
+// 	// seta os controles
+// 	// da free em tudo
+// 	printf("DEBUG: game_loop() -> finished\n");
+// 	return (true);
+// }
 
 static void	execution(t_map *map)
 {
 	init_graphics(map);
 	init_textures(map);
 	init_player(map);
+	mlx_loop_hook(map->mlx_ptr, render, map); // game é sua struct principal
+	mlx_loop(map->mlx_ptr); // Inicia o loop da minilibx
 	printf("DEBUG: execution() -> finished\n");
 }
 

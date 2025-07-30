@@ -6,18 +6,39 @@
 /*   By: dteruya <dteruya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 16:31:47 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/30 17:20:10 by dteruya          ###   ########.fr       */
+/*   Updated: 2025/07/30 18:40:08 by dteruya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-// 1. Calcular a direção do raio (rayDirX, rayDirY)
-static void	direction(t_player *player, int index)
+void my_mlx_pixel_put(t_data_img *img, int x, int y, int color)
 {
-	player->ray.cam_x = 2 * index / (double)WIDTH - 1;
-	player->ray.ray_dir_x = player->dir_x + player->plane_x * player->ray.cam_x;
-	player->ray.ray_dir_y = player->dir_y + player->plane_y * player->ray.cam_x;
+	char *dst;
+
+	// Basic bounds checking to prevent writing outside the image buffer
+	// You should define WIDTH and HEIGHT, probably in a header file.
+	// Assuming WIDTH and HEIGHT are the dimensions of your window.
+	if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT) // Make sure WIDTH and HEIGHT are defined
+		return;
+
+	// Calculate the memory address of the pixel
+	// img->addr is the starting address of the pixel data for the image
+	// y * img->line_length moves to the correct row (line_length is bytes per line)
+	// x * (img->bits_per_pixel / 8) moves to the correct column (bytes per pixel)
+	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
+
+	// Cast the address to an unsigned int pointer and assign the color
+	// This assumes 32 bits per pixel (4 bytes), common for RGB.
+	*(unsigned int*)dst = color;
+}
+
+// 1. Calcular a direção do raio (rayDirX, rayDirY)
+static void	direction(t_player *player, t_ray *ray, int index)
+{
+	ray->cam_x = 2 * index / (double)WIDTH - 1;
+	ray->ray_dir_x = player->dir_x + player->plane_x * ray->cam_x;
+	ray->ray_dir_y = player->dir_y + player->plane_y * ray->cam_x;
 }
 
 // 2. Inicializar o DDA (mapX, mapY, sideDistX, sideDistY, deltaDistX, deltaDistY)
@@ -73,7 +94,7 @@ void	loop_dda(t_ray *ray, t_map *map)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		if (map->matrix[ray->map_y][ray->map_x] > 0)
+		if (map->matrix[ray->map_y][ray->map_x] == 1)
 			ray->hit = 1;
 	}
 }
@@ -118,6 +139,41 @@ void	calculate_wall(t_ray *ray)
 		ray->end = HEIGHT -1;
 }
 
+void	draw_ceiling(t_map *map, t_ray *ray, int x)
+{
+	ray->y_pixel = 0;
+	while (ray->y_pixel < map->ray.start)
+	{
+		my_mlx_pixel_put(map->img, x, ray->y_pixel, 0x0087CEEB);
+		ray->y_pixel++;
+	}
+}
+
+void	draw_wall(t_ray *ray, t_map *map, int x)
+{
+	int color;
+
+	while (ray->y_pixel < map->ray.end)
+	{
+		if (map->ray.side == 0)
+			color = 0x00FF0000;
+		else
+			color = 0x0000FF00;
+
+		my_mlx_pixel_put(map->img, x, ray->y_pixel, color);
+		ray->y_pixel++;
+	}
+}
+
+void	draw_floor(t_ray *ray, t_map *map, int x)
+{
+	while (ray->y_pixel < HEIGHT)
+	{
+		my_mlx_pixel_put(map->img, x, ray->y_pixel, 0x008B4513);
+		ray->y_pixel++;
+	}
+}
+
 int	render(void *param)
 {
 	t_map	*map;
@@ -128,19 +184,36 @@ int	render(void *param)
 	while (x < WIDTH)
 	{
 		// --- CÓDIGO DO RAYCASTING PARA A COLUNA 'x' ---
-        // 1. Calcular a direção do raio (rayDirX, rayDirY)
-		direction(map->player, x);
-        // 2. Inicializar o DDA (mapX, mapY, sideDistX, sideDistY, deltaDistX, deltaDistY)
-		dda(&map->player->ray, map->player);
-        // 3. Loop do DDA (encontrar a parede)
-		loop_dda(&map->player->ray, map);
-        // 4. Calcular a distância perpendicular (perpWallDist)
-		calculate_distance(&map->player->ray, map->player);
-        // 5. Calcular a altura da parede na tela (lineHeight, drawStart, drawEnd)
-		calculate_wall(&map->player->ray);
-        // 6. Desenhar o TETO para a coluna 'x'
-        // 7. Desenhar a PAREDE para a coluna 'x' (aplicando textura depois)
-        // 8. Desenhar o CHÃO para a coluna 'x'
+		// 1. Calcular a direção do raio (rayDirX, rayDirY)
+		direction(map->player, &map->ray, x);
+		printf("1\n\n");
+		// 2. Inicializar o DDA (mapX, mapY, sideDistX, sideDistY, deltaDistX, deltaDistY)
+		dda(&map->ray, map->player);
+		printf("2\n\n");
+
+		// 3. Loop do DDA (encontrar a parede)
+		loop_dda(&map->ray, map);
+		printf("3\n\n");
+
+		// 4. Calcular a distância perpendicular (perpWallDist)
+		calculate_distance(&map->ray, map->player);
+		printf("4\n\n");
+
+		// 5. Calcular a altura da parede na tela (lineHeight, drawStart, drawEnd)
+		calculate_wall(&map->ray);
+		printf("5\n\n");
+
+		// 6. Desenhar o TETO para a coluna 'x'
+		draw_ceiling(map, &map->ray, x);
+		printf("6\n\n");
+
+		// 7. Desenhar a PAREDE para a coluna 'x' (aplicando textura depois)
+		draw_wall(&map->ray, map, x);
+		printf("7\n\n");
+
+		// 8. Desenhar o CHÃO para a coluna 'x'
+		draw_floor(&map->ray, map, x);
+		printf("8\n\n");
 		x++;
 	}
 	mlx_put_image_to_window(map->mlx_ptr, map->window_ptr, map->img->img_ptr, 0, 0);

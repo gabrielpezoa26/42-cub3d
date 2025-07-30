@@ -6,7 +6,7 @@
 /*   By: dteruya <dteruya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 17:28:04 by dteruya           #+#    #+#             */
-/*   Updated: 2025/07/30 17:28:06 by dteruya          ###   ########.fr       */
+/*   Updated: 2025/07/30 18:10:49 by dteruya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ typedef struct s_ray
 	double	side_dist_x;
 	double	side_dist_y;
 	double	wall_dist;
+	int		y_pixel;
 	int		start;
 	int		end;
 	int		line_height;
@@ -112,6 +113,7 @@ typedef struct s_map
 	void		*mlx_ptr;
 	void		*window_ptr;
 	char		letter;
+	t_ray		ray;
 	t_data_img	*img;
 	t_point		*pov;
 	t_info		*info;
