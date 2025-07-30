@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 14:31:37 by diego             #+#    #+#             */
-/*   Updated: 2025/07/25 14:33:42 by diego            ###   ########.fr       */
+/*   Updated: 2025/07/29 20:13:09 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,18 +62,23 @@ bool	is_valid_map(char *file_name, t_map **map, t_info **info)
 {
 	if (is_empty_map(file_name))
 	{
-		printf("DEBUG: Não tem mapa\n");
+		printf("Error: Map is empty.\n");
 		return (false);
 	}
 	*map = ft_calloc(1, sizeof(t_map));
 	if (!*map)
 		return (false);
+	(*map)->info = *info;
 	init_matrix(file_name, *map);
 	if (!count_letters(*map))
 	{
-		printf("TEM ZERO SPAWNS\n");
+		printf("Error: TEM ZERO SPAWNS\n");
 		return (false);
 	}
-	(*map)->info = *info;
-	return (flood_fill_validation(map));
+	if (!flood_fill_validation(map))
+	{
+		printf("Error: Map is not enclosed by walls.\n");
+		return (false);
+	}
+	return (true);
 }

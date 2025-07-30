@@ -6,7 +6,11 @@
 /*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 22:27:10 by diego             #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/07/29 22:31:18 by diego            ###   ########.fr       */
+=======
+/*   Updated: 2025/07/29 19:45:03 by gcesar-n         ###   ########.fr       */
+>>>>>>> development
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +78,12 @@ static void	insert_the_values(char *line, t_map *map, int i)
 			tmp = ft_strdup(dg_strcmp(line[j]));
 			if (search_the_letter(tmp, map))
 			{
-				map->pov = ft_calloc(1, sizeof(map->pov));
-				map->pov->x = j;
-				map->pov->y = i;
+				if (!map->pov)
+				{
+					map->pov = ft_calloc(1, sizeof(map->pov));
+					map->pov->x = j;
+					map->pov->y = i;
+				}
 			}
 			map->matrix[i][j] = ft_atoi(tmp);
 			free(tmp);

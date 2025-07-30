@@ -41,7 +41,8 @@ SRC = $(SRC_DIR)/main.c \
 	$(UTILS_DIR)/exec_utils.c \
 	$(SAVING_DIR)/textures.c \
 	$(SAVING_DIR)/textures_utils.c \
-	$(MATH_DIR)/math.c \
+	$(SAVING_DIR)/init_exec.c \
+	$(SAVING_DIR)/init_exec_utils.c \
 	$(MATH_DIR)/ray_casting.c
 
 OBJ_DIR = objects
@@ -81,14 +82,15 @@ re: fclean all
 
 SUPP = mlx.supp
 
-# val: all
-# 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --suppressions=$(SUPP) ./$(NAME) map.cub
-
 crica: all
 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --suppressions=$(SUPP) ./$(NAME) mapas/crica.cub
 
 certo: all
 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --suppressions=$(SUPP) ./$(NAME) mapas/certo.cub
+
+errado: all
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --suppressions=$(SUPP) ./$(NAME) mapas/errado.cub
+
 
 run: all
 	./$(NAME) mapas/certo.cub

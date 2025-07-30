@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dteruya <dteruya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 18:22:52 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/30 01:35:39 by diego            ###   ########.fr       */
+/*   Updated: 2025/07/30 17:19:41 by dteruya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,7 @@ typedef struct s_player
 	double	dir_x;
 	double	dir_y;
 	double	plane_x;  //angulo da camera na vertical
-	double	plane_y;  //angulo da camera na horizontal
-	t_ray	ray;
+	double	plane_y;
 }	t_player;
 
 typedef struct s_map
@@ -169,6 +168,12 @@ int		**dup_int_matrix(t_map *map);
 void	print_matrix(int **matrix, int cols, int rows);
 
 /*--------------------EXEC------------------*/
+
+/*--------------------EXEC_UTILS------------------*/
+void	set_north_values(t_map *map);
+void	set_south_values(t_map *map);
+void	set_east_values(t_map *map);
+void	set_west_values(t_map *map);
 
 /*--------------LOAD_TEXT--------------------*/
 void	load_textures(t_map *map);
