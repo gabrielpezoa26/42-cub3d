@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dteruya <dteruya@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 17:28:04 by dteruya           #+#    #+#             */
-/*   Updated: 2025/07/30 18:10:49 by dteruya          ###   ########.fr       */
+/*   Updated: 2025/08/03 19:07:58 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,5 +186,8 @@ void	load_west_texture(t_map *map);
 
 /*---------RENDER---------------*/
 int		render(void *param);
+
+int		key_hook(int keycode, t_map *map);
+int		close_game(t_map *map);
 
 #endif

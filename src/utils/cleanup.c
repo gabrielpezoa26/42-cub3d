@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dteruya <dteruya@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 17:16:53 by dteruya           #+#    #+#             */
-/*   Updated: 2025/07/30 17:16:56 by dteruya          ###   ########.fr       */
+/*   Updated: 2025/08/03 19:16:29 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,13 @@ void	free_map(t_map **map)
 	}
 	free(*map);
 	*map = NULL;
+}
+
+int close_game(t_map *map)
+{
+	free_map(&map);
+	ft_printf("aaaaaaaaaaa\n");
+	exit(0);
 }
 
 void	exit_error(char *str, t_map *map)
