@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
+/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 17:28:04 by dteruya           #+#    #+#             */
-/*   Updated: 2025/08/04 16:43:28 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/08/04 18:39:44 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@
 # define WIDTH 800
 # define HEIGHT 800
 # define TITLE "CUB 3D"
-# define MOVE_SPEED 0.1
+# define MOVE_SPEED 0.25
+# define ROT_SPEED 0.25
 
 typedef struct s_point
 {
@@ -197,5 +198,9 @@ void	init_graphics(t_map *map);
 int		key_hook(int keycode, t_map *map);
 void	move_forward(t_map *map);
 void	move_backward(t_map *map);
+void rotate_right(t_map *map);
+void rotate_left(t_map *map);
+void	move_left(t_map *map);
+void	move_right(t_map *map);
 
 #endif
