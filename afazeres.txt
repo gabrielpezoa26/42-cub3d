@@ -1,5 +1,6 @@
 
 
 
--> estudar raycasting
--> sla
+raycasting:
+
+    -> implementar as texturas (no lugar das cores)

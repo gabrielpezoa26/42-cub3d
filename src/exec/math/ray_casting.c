@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dteruya <dteruya@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 16:31:47 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/30 18:40:08 by dteruya          ###   ########.fr       */
+/*   Updated: 2025/08/04 15:50:24 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,14 +129,14 @@ void	calculate_distance(t_ray *ray, t_player *player)
 void	calculate_wall(t_ray *ray)
 {
 	if (ray->wall_dist == 0)
-		ray->wall_dist= 0.001;
+		ray->wall_dist = 0.001;
 	ray->line_height = (int)(HEIGHT / ray->wall_dist);
-	ray->start = ray->line_height / 2 + HEIGHT / 2;
+	ray->start = -ray->line_height / 2 + HEIGHT / 2;
 	if (ray->start < 0)
 		ray->start = 0;
 	ray->end = ray->line_height / 2 + HEIGHT / 2;
 	if (ray->end >= HEIGHT)
-		ray->end = HEIGHT -1;
+		ray->end = HEIGHT - 1;
 }
 
 void	draw_ceiling(t_map *map, t_ray *ray, int x)
