@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/10 18:22:43 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/08/03 20:50:47 by gcesar-n         ###   ########.fr       */
+/*   Created: 2025/08/03 20:49:32 by gcesar-n          #+#    #+#             */
+/*   Updated: 2025/08/03 20:50:39 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
-int	main(int ac, char **av)
+void	execution(t_map *map)
 {
-	t_info	*info;
-	t_map	*map;
-
-	info = NULL;
-	map = NULL;
-	if (!parse_input(ac, av, &info, &map))
-		printf("DEBUG: Deu ruim no mapa\n");
-	else
-	{
-		execution(map);
-	}
-	if (map)
-		free_map(&map);
-	printf("DEBUG: main() -> finish :)) \n");
-	return (0);
+	init_graphics(map);
+	init_textures(map);
+	init_player(map);
+	mlx_key_hook(map->window_ptr, key_hook, map);
+	mlx_hook(map->window_ptr, 17, 0, close_game, map);
+	mlx_loop_hook(map->mlx_ptr, render, map);
+	mlx_loop(map->mlx_ptr);
+	printf("DEBUG: execution() -> finished\n");
 }

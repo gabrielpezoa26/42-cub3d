@@ -1,6 +1,5 @@
-29/07
 
 
--> testar coisa d crica no parsing c valgrind cpa*
 
--> raycastinggggg
+-> estudar raycasting
+-> sla

@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 17:28:04 by dteruya           #+#    #+#             */
-/*   Updated: 2025/08/03 19:07:58 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/08/03 20:51:15 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ typedef struct s_player
 	double	position_y;
 	double	dir_x;
 	double	dir_y;
-	double	plane_x;  //angulo da camera na vertical
+	double	plane_x;
 	double	plane_y;
 }	t_player;
 
@@ -145,6 +145,7 @@ void	free_map(t_map **map);
 void	free_matrix(int **matrix, int height);
 void	exit_error(char *str, t_map *map);
 void	free_single_texture(void *mlx_ptr, t_data_img *texture_img);
+int		close_game(t_map *map);
 
 /*---------ROSE--------------*/
 void	init_south(t_info *info, int *i, char *line);
@@ -170,6 +171,7 @@ int		**dup_int_matrix(t_map *map);
 void	print_matrix(int **matrix, int cols, int rows);
 
 /*--------------------EXEC------------------*/
+void	execution(t_map *map);
 
 /*--------------------EXEC_UTILS------------------*/
 void	set_north_values(t_map *map);
@@ -187,7 +189,10 @@ void	load_west_texture(t_map *map);
 /*---------RENDER---------------*/
 int		render(void *param);
 
+/*---------GRAPHICS---------------*/
+void	init_graphics(t_map *map);
+
+/*---------CONTROLS---------------*/
 int		key_hook(int keycode, t_map *map);
-int		close_game(t_map *map);
 
 #endif
