@@ -1,6 +1,6 @@
 
-
+04/08
 
 raycasting:
 
-    -> implementar as texturas (no lugar das cores)
+    -> movimento

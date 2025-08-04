@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 16:31:47 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/08/04 15:50:24 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/08/04 16:44:33 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,37 +186,37 @@ int	render(void *param)
 		// --- CÓDIGO DO RAYCASTING PARA A COLUNA 'x' ---
 		// 1. Calcular a direção do raio (rayDirX, rayDirY)
 		direction(map->player, &map->ray, x);
-		printf("1\n\n");
+		// printf("1\n\n");
 		// 2. Inicializar o DDA (mapX, mapY, sideDistX, sideDistY, deltaDistX, deltaDistY)
 		dda(&map->ray, map->player);
-		printf("2\n\n");
+		// printf("2\n\n");
 
 		// 3. Loop do DDA (encontrar a parede)
 		loop_dda(&map->ray, map);
-		printf("3\n\n");
+		// printf("3\n\n");
 
 		// 4. Calcular a distância perpendicular (perpWallDist)
 		calculate_distance(&map->ray, map->player);
-		printf("4\n\n");
+		// printf("4\n\n");
 
 		// 5. Calcular a altura da parede na tela (lineHeight, drawStart, drawEnd)
 		calculate_wall(&map->ray);
-		printf("5\n\n");
+		// printf("5\n\n");
 
 		// 6. Desenhar o TETO para a coluna 'x'
 		draw_ceiling(map, &map->ray, x);
-		printf("6\n\n");
+		// printf("6\n\n");
 
 		// 7. Desenhar a PAREDE para a coluna 'x' (aplicando textura depois)
 		draw_wall(&map->ray, map, x);
-		printf("7\n\n");
+		// printf("7\n\n");
 
 		// 8. Desenhar o CHÃO para a coluna 'x'
 		draw_floor(&map->ray, map, x);
-		printf("8\n\n");
+		// printf("8\n\n");
 		x++;
 	}
 	mlx_put_image_to_window(map->mlx_ptr, map->window_ptr, map->img->img_ptr, 0, 0);
-	printf("DEBUG: frame rendered\n");
+	// printf("DEBUG: frame rendered\n");
 	return (0);
 }

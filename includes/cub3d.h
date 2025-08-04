@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 17:28:04 by dteruya           #+#    #+#             */
-/*   Updated: 2025/08/03 20:51:15 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/08/04 16:43:28 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@
 # define WIDTH 800
 # define HEIGHT 800
 # define TITLE "CUB 3D"
+# define MOVE_SPEED 0.1
 
 typedef struct s_point
 {
@@ -194,5 +195,7 @@ void	init_graphics(t_map *map);
 
 /*---------CONTROLS---------------*/
 int		key_hook(int keycode, t_map *map);
+void	move_forward(t_map *map);
+void	move_backward(t_map *map);
 
 #endif
