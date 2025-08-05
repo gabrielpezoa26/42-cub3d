@@ -1,7 +1,9 @@
 
-04/08
 
-raycasting:
+-> tirar os printf
 
-    -> diminuir velocidade do movimento e rotaçao
-    -> achar umas textura maladeza
+-> fzr mapa bunitim
+
+-> tirar os bagui makefile
+
+-> push intra
