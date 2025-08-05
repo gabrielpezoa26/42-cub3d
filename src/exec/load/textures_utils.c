@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
+/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 18:34:42 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/08/05 09:16:35 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/08/05 15:13:11 by diego            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ int	get_texture_color(t_data_img *texture, int x, int y)
 
 	if (x < 0 || x >= texture->width || y < 0 || y >= texture->height)
 		return (0x000000);
-	dst = texture->addr + (y * texture->line_length + x * (texture->bits_per_pixel / 8));
+	dst = texture->addr + (y * texture->line_length + x * \
+		(texture->bits_per_pixel / 8));
 	return (*(unsigned int *)dst);
 }

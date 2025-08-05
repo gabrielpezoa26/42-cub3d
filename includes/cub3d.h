@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dteruya <dteruya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 17:28:04 by dteruya           #+#    #+#             */
-/*   Updated: 2025/08/05 10:55:20 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/08/05 15:37:21 by dteruya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@
 # define WIDTH 800
 # define HEIGHT 800
 # define TITLE "CUB 3D"
-# define MOVE_SPEED 0.01
-# define ROT_SPEED 0.01
+# define MOVE_SPEED 0.02
+# define ROT_SPEED 0.02
 
 typedef struct s_point
 {
@@ -197,17 +197,18 @@ void	load_west_texture(t_map *map);
 int		get_texture_color(t_data_img *texture, int x, int y);
 /*---------RENDER---------------*/
 int		render(void *param);
+void	draw_textured_wall(t_map *map, int x);
+void	draw_ceiling_and_floor(t_map *map, int x);
+void	loop_dda(t_ray *ray, t_map *map);
+void	dda(t_ray *ray, t_player *player);
+void	my_mlx_pixel_put(t_data_img *img, int x, int y, int color);
 
 /*---------GRAPHICS---------------*/
 void	init_graphics(t_map *map);
 
 /*---------CONTROLS---------------*/
-void	move_forward(t_map *map);
-void	move_backward(t_map *map);
-void	move_left(t_map *map);
-void	move_right(t_map *map);
-void	rotate_left(t_map *map);
-void	rotate_right(t_map *map);
+void	rotate_left(t_player *player);
+void	rotate_right(t_player *player);
 int		key_press_hook(int keycode, t_map *map);
 int		key_release_hook(int keycode, t_map *map);
 void	update_player_position(t_map *map);

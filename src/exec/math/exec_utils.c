@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dteruya <dteruya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 20:41:15 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/30 14:45:35 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/08/05 15:20:44 by dteruya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,14 @@ void	init_data_img(t_map *map)
 	map->img = ft_calloc(1, sizeof(t_data_img));
 	if (!map->img)
 		exit_error("Error allocating memory for main image struct", map);
+}
+
+void	my_mlx_pixel_put(t_data_img *img, int x, int y, int color)
+{
+	char	*dst;
+
+	if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT)
+		return ;
+	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
 }

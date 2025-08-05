@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   movement.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dteruya <dteruya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 16:35:49 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/08/05 09:10:44 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/08/05 15:32:24 by dteruya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	move_forward(t_map *map)
+static void	move_forward(t_map *map)
 {
 	double	new_x;
 	double	new_y;
@@ -26,7 +26,7 @@ void	move_forward(t_map *map)
 	}
 }
 
-void	move_backward(t_map *map)
+static void	move_backward(t_map *map)
 {
 	double	new_x;
 	double	new_y;
@@ -40,7 +40,7 @@ void	move_backward(t_map *map)
 	}
 }
 
-void	move_left(t_map *map)
+static void	move_left(t_map *map)
 {
 	double	new_x;
 	double	new_y;
@@ -54,7 +54,7 @@ void	move_left(t_map *map)
 	}
 }
 
-void	move_right(t_map *map)
+static void	move_right(t_map *map)
 {
 	double	new_x;
 	double	new_y;
@@ -68,32 +68,18 @@ void	move_right(t_map *map)
 	}
 }
 
-void	rotate_left(t_map *map)
+void	update_player_position(t_map *map)
 {
-	double	old_dir_x;
-	double	old_plane_x;
-	double	rot_speed;
-
-	old_dir_x = map->player->dir_x;
-	old_plane_x = map->player->plane_x;
-	rot_speed = -0.05;
-	map->player->dir_x = map->player->dir_x * cos(rot_speed) - map->player->dir_y * sin(rot_speed);
-	map->player->dir_y = old_dir_x * sin(rot_speed) + map->player->dir_y * cos(rot_speed);
-	map->player->plane_x = map->player->plane_x * cos(rot_speed) - map->player->plane_y * sin(rot_speed);
-	map->player->plane_y = old_plane_x * sin(rot_speed) + map->player->plane_y * cos(rot_speed);
-}
-
-void	rotate_right(t_map *map)
-{
-	double	old_dir_x;
-	double	old_plane_x;
-	double	rot_speed;
-
-	old_dir_x = map->player->dir_x;
-	old_plane_x = map->player->plane_x;
-	rot_speed = 0.05;
-	map->player->dir_x = map->player->dir_x * cos(rot_speed) - map->player->dir_y * sin(rot_speed);
-	map->player->dir_y = old_dir_x * sin(rot_speed) + map->player->dir_y * cos(rot_speed);
-	map->player->plane_x = map->player->plane_x * cos(rot_speed) - map->player->plane_y * sin(rot_speed);
-	map->player->plane_y = old_plane_x * sin(rot_speed) + map->player->plane_y * cos(rot_speed);
+	if (map->player->is_moving_forward)
+		move_forward(map);
+	if (map->player->is_moving_backward)
+		move_backward(map);
+	if (map->player->is_moving_left)
+		move_left(map);
+	if (map->player->is_moving_right)
+		move_right(map);
+	if (map->player->is_rotating_left)
+		rotate_left(map->player);
+	if (map->player->is_rotating_right)
+		rotate_right(map->player);
 }
