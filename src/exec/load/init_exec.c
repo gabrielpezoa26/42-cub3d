@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 18:36:26 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/29 20:12:39 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/08/05 09:04:11 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,11 @@ void	init_player(t_map *map)
 		exit_error("Error allocating memory for player struct", map);
 	map->player->position_x = map->pov->x + 0.5;
 	map->player->position_y = map->pov->y + 0.5;
+	map->player->is_moving_forward = false;
+	map->player->is_moving_backward = false;
+	map->player->is_moving_left = false;
+	map->player->is_moving_right = false;
+	map->player->is_rotating_left = false;
+	map->player->is_rotating_right = false;
 	set_direction_values(map);
 }

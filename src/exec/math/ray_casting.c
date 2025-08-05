@@ -130,12 +130,29 @@ void	draw_column(t_map *map, int x)
 	}
 }
 
+void	update_player_position(t_map *map)
+{
+	if (map->player->is_moving_forward)
+		move_forward(map);
+	if (map->player->is_moving_backward)
+		move_backward(map);
+	if (map->player->is_moving_left)
+		move_left(map);
+	if (map->player->is_moving_right)
+		move_right(map);
+	if (map->player->is_rotating_left)
+		rotate_left(map);
+	if (map->player->is_rotating_right)
+		rotate_right(map);
+}
+
 int	render(void *param)
 {
 	t_map	*map;
 	int		x;
 
 	map = (t_map *)param;
+	update_player_position(map);
 	x = 0;
 	while (x < WIDTH)
 	{

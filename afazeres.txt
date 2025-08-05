@@ -3,4 +3,5 @@
 
 raycasting:
 
-    -> movimento
+    -> diminuir velocidade do movimento e rotaçao
+    -> texturas

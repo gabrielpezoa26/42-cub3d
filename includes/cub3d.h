@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 17:28:04 by dteruya           #+#    #+#             */
-/*   Updated: 2025/08/04 18:39:44 by diego            ###   ########.fr       */
+/*   Updated: 2025/08/05 09:12:47 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@
 # define WIDTH 800
 # define HEIGHT 800
 # define TITLE "CUB 3D"
-# define MOVE_SPEED 0.25
-# define ROT_SPEED 0.25
+# define MOVE_SPEED 0.001
+# define ROT_SPEED 0.001
 
 typedef struct s_point
 {
@@ -105,6 +105,12 @@ typedef struct s_player
 	double	dir_y;
 	double	plane_x;
 	double	plane_y;
+	bool	is_moving_forward;
+	bool	is_moving_backward;
+	bool	is_moving_left;
+	bool	is_moving_right;
+	bool	is_rotating_left;
+	bool	is_rotating_right;
 }	t_player;
 
 typedef struct s_map
@@ -195,12 +201,14 @@ int		render(void *param);
 void	init_graphics(t_map *map);
 
 /*---------CONTROLS---------------*/
-int		key_hook(int keycode, t_map *map);
 void	move_forward(t_map *map);
 void	move_backward(t_map *map);
-void rotate_right(t_map *map);
-void rotate_left(t_map *map);
 void	move_left(t_map *map);
 void	move_right(t_map *map);
+void	rotate_left(t_map *map);
+void	rotate_right(t_map *map);
+int		key_press_hook(int keycode, t_map *map);
+int		key_release_hook(int keycode, t_map *map);
+void	update_player_position(t_map *map);
 
 #endif
