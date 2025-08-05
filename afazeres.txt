@@ -4,4 +4,4 @@
 raycasting:
 
     -> diminuir velocidade do movimento e rotaçao
-    -> texturas
+    -> achar umas textura maladeza

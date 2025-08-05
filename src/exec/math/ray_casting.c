@@ -11,6 +11,24 @@ void my_mlx_pixel_put(t_data_img *img, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
+static t_data_img	*get_texture(t_map *map)
+{
+	if (map->ray.side == 0)
+	{
+		if (map->ray.ray_dir_x > 0)
+			return (map->text->east);
+		else
+			return (map->text->west);
+	}
+	else
+	{
+		if (map->ray.ray_dir_y > 0)
+			return (map->text->south);
+		else
+			return (map->text->north);
+	}
+}
+
 static void direction(t_player *player, t_ray *ray, int index)
 {
 	ray->cam_x = 2 * index / (double)WIDTH - 1;
@@ -98,38 +116,48 @@ void	calculate_wall(t_ray *ray)
 
 void	draw_column(t_map *map, int x)
 {
-	int y;
-	int color;
+	int			y;
+	int			color;
+	double		wall_x;
+	int			tex_x;
+	int			tex_y;
+	double		step;
+	double		tex_pos;
+	t_data_img	*texture;
 
-	// Draw Ceiling
 	y = 0;
 	while (y < map->ray.start)
 	{
-		my_mlx_pixel_put(map->img, x, y, 0x0087CEEB);
+		my_mlx_pixel_put(map->img, x, y, rgb_to_int(map->info->ceiling_color[0], map->info->ceiling_color[1], map->info->ceiling_color[2]));
 		y++;
 	}
-
-	// Draw Wall
+	if (map->ray.side == 0)
+		wall_x = map->player->position_y + map->ray.wall_dist * map->ray.ray_dir_y;
+	else
+		wall_x = map->player->position_x + map->ray.wall_dist * map->ray.ray_dir_x;
+	wall_x -= floor((wall_x));
+	texture = get_texture(map);
+	tex_x = (int)(wall_x * (double)texture->width);
+	if ((map->ray.side == 0 && map->ray.ray_dir_x > 0) || (map->ray.side == 1 && map->ray.ray_dir_y < 0))
+		tex_x = texture->width - tex_x - 1;
+	step = 1.0 * texture->height / map->ray.line_height;
+	tex_pos = (map->ray.start - HEIGHT / 2 + map->ray.line_height / 2) * step;
 	y = map->ray.start;
 	while (y < map->ray.end)
 	{
-		if (map->ray.side == 0)
-			color = 0x00FF0000; // Red for X-side walls
-		else
-			color = 0x0000FF00; // Green for Y-side walls
+		tex_y = (int)tex_pos & (texture->height - 1);
+		tex_pos += step;
+		color = get_texture_color(texture, tex_x, tex_y);
 		my_mlx_pixel_put(map->img, x, y, color);
 		y++;
 	}
-
-	// Draw Floor
 	y = map->ray.end;
 	while (y < HEIGHT)
 	{
-		my_mlx_pixel_put(map->img, x, y, 0x008B4513);
+		my_mlx_pixel_put(map->img, x, y, rgb_to_int(map->info->floor_color[0], map->info->floor_color[1], map->info->floor_color[2]));
 		y++;
 	}
 }
-
 void	update_player_position(t_map *map)
 {
 	if (map->player->is_moving_forward)

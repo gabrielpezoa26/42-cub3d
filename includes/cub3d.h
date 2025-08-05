@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 17:28:04 by dteruya           #+#    #+#             */
-/*   Updated: 2025/08/05 09:12:47 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/08/05 09:35:50 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include <math.h>
 # include <fcntl.h>
+# include <X11/X.h>
 # include <stdbool.h>
 # include <limits.h>
 # include "libft/libft.h"
@@ -37,8 +38,8 @@
 # define WIDTH 800
 # define HEIGHT 800
 # define TITLE "CUB 3D"
-# define MOVE_SPEED 0.001
-# define ROT_SPEED 0.001
+# define MOVE_SPEED 0.01
+# define ROT_SPEED 0.01
 
 typedef struct s_point
 {
@@ -193,7 +194,7 @@ void	load_north_texture(t_map *map);
 void	load_south_texture(t_map *map);
 void	load_east_texture(t_map *map);
 void	load_west_texture(t_map *map);
-
+int		get_texture_color(t_data_img *texture, int x, int y);
 /*---------RENDER---------------*/
 int		render(void *param);
 

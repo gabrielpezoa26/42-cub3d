@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 18:34:42 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/28 18:40:20 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/08/05 09:16:35 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,14 @@ void	load_west_texture(t_map *map)
 	map->text->west->addr = mlx_get_data_addr(map->text->west->img_ptr,
 			&map->text->west->bits_per_pixel,
 			&map->text->west->line_length, &map->text->west->endian);
+}
+
+int	get_texture_color(t_data_img *texture, int x, int y)
+{
+	char	*dst;
+
+	if (x < 0 || x >= texture->width || y < 0 || y >= texture->height)
+		return (0x000000);
+	dst = texture->addr + (y * texture->line_length + x * (texture->bits_per_pixel / 8));
+	return (*(unsigned int *)dst);
 }
