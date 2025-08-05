@@ -1,9 +1,9 @@
+tirar os printf
 
+tirar os make errado certo make crica
 
--> tirar os printf
+apagar afazeres.txt
 
--> fzr mapa bunitim
+clonar dnv e ver se o makefile funfa
 
--> tirar os bagui makefile
-
--> push intra
+push intra
