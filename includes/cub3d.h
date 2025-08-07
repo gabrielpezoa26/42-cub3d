@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 17:28:04 by dteruya           #+#    #+#             */
-/*   Updated: 2025/08/07 13:06:40 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/08/07 15:52:51 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 
 # define WIDTH 800
 # define HEIGHT 800
-# define TITLE "CUB 3D"
+# define TITLE "cub3D"
 # define MOVE_SPEED 0.02
 # define ROT_SPEED 0.02
 
