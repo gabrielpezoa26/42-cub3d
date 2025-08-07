@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/03 20:46:26 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/08/03 20:46:53 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/08/07 12:25:38 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,4 @@ void	init_graphics(t_map *map)
 	map->img->addr = mlx_get_data_addr(map->img->img_ptr,
 			&map->img->bits_per_pixel,
 			&map->img->line_length, &map->img->endian);
-	printf("DEBUG: init_graphics()-> finished\n");
 }

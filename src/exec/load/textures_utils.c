@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diego <diego@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 18:34:42 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/08/05 15:13:11 by diego            ###   ########.fr       */
+/*   Updated: 2025/08/07 12:25:58 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	load_north_texture(t_map *map)
 {
-	printf("DEBUG: entering load_north_texture\n");
 	map->text->north = (t_data_img *)malloc(sizeof(t_data_img));
 	if (!map->text->north)
 		exit_error("Error allocating memory for North texture\n", map);
@@ -26,10 +25,6 @@ void	load_north_texture(t_map *map)
 	map->text->north->addr = mlx_get_data_addr(map->text->north->img_ptr,
 			&map->text->north->bits_per_pixel,
 			&map->text->north->line_length, &map->text->north->endian);
-	printf("DEBUG: img_ptr: %p\n", map->text->north->img_ptr);
-	printf("DEBUG: BPP:  %d\n", map->text->north->bits_per_pixel);
-	printf("DEBUG: line_length: %d\n", map->text->north->line_length);
-	printf("DEBUG: endian: %d\n", map->text->north->endian);
 }
 
 void	load_south_texture(t_map *map)

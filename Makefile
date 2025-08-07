@@ -89,17 +89,14 @@ re: fclean all
 
 SUPP = mlx.supp
 
-crica: all
-	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --suppressions=$(SUPP) ./$(NAME) mapas/crica.cub
+val: all
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --suppressions=$(SUPP) ./$(NAME) maps/map.cub
 
-certo: all
-	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --suppressions=$(SUPP) ./$(NAME) mapas/certo.cub
-
-errado: all
-	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --suppressions=$(SUPP) ./$(NAME) mapas/errado.cub
+wrong: all
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --suppressions=$(SUPP) ./$(NAME) maps/invalid.cub
 
 
 run: all
-	./$(NAME) mapas/certo.cub
+	./$(NAME) maps/map.cub
 
 .PHONY: all clean fclean re val run

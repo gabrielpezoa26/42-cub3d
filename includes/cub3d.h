@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dteruya <dteruya@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 17:28:04 by dteruya           #+#    #+#             */
-/*   Updated: 2025/08/05 15:37:21 by dteruya          ###   ########.fr       */
+/*   Updated: 2025/08/07 13:06:40 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@
 # include "../minilibx-linux/mlx_int.h"
 
 /*---------MACROS---------*/
-# define INVALID_ARGC "Invalid arg count\n"
 # define FORMAT "Invalid format. Correct format:\n./cub3D file.cub\n"
 # define STRUCT "Invalid struct!!\n"
-# define MLX "Error initializing mlx!!\n"
+# define MLX "Error initializing mlx\n"
+# define INVALID_ARGC "Invalid arg count\n"
 
 # define WALL_VALUE 1
 # define EMPTY_VALUE 0
@@ -148,6 +148,10 @@ void	convert_rgb_colors(t_map *map);
 
 /*---------INIT---------*/
 void	init_info(char *file_name, t_info **info);
+void	init_south(t_info *info, int *i, char *line);
+void	init_east(t_info *info, int *i, char *line);
+void	init_west(t_info *info, int *i, char *line);
+void	init_north(t_info *info, int *i, char *line);
 
 /*---------CLEANUP---------*/
 void	free_map(t_map **map);
@@ -155,12 +159,6 @@ void	free_matrix(int **matrix, int height);
 void	exit_error(char *str, t_map *map);
 void	free_single_texture(void *mlx_ptr, t_data_img *texture_img);
 int		close_game(t_map *map);
-
-/*---------ROSE--------------*/
-void	init_south(t_info *info, int *i, char *line);
-void	init_east(t_info *info, int *i, char *line);
-void	init_west(t_info *info, int *i, char *line);
-void	init_north(t_info *info, int *i, char *line);
 
 /*---------------RGB-----------*/
 int		rgb_to_int(int r, int g, int b);
@@ -175,9 +173,6 @@ void	fill_the_matrix(char *file_name, t_map *map);
 bool	flood_fill_recursive(t_map **map, int **map_copy, int x, int y);
 bool	flood_fill_validation(t_map **map);
 int		**dup_int_matrix(t_map *map);
-
-/*PARA DEBUGAR*/
-void	print_matrix(int **matrix, int cols, int rows);
 
 /*--------------------EXEC------------------*/
 void	execution(t_map *map);
@@ -195,6 +190,7 @@ void	load_south_texture(t_map *map);
 void	load_east_texture(t_map *map);
 void	load_west_texture(t_map *map);
 int		get_texture_color(t_data_img *texture, int x, int y);
+
 /*---------RENDER---------------*/
 int		render(void *param);
 void	draw_textured_wall(t_map *map, int x);

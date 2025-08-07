@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 18:19:41 by dteruya           #+#    #+#             */
-/*   Updated: 2025/08/03 20:40:41 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/08/07 12:26:22 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,28 +108,5 @@ void	fill_the_matrix(char *file_name, t_map *map)
 		free(line);
 		line = get_next_line(fd);
 	}
-	printf("DEBUG: map->letter:  %c\n", map->letter);
 	close(fd);
-}
-
-/* PARA DEBUGAR */
-void	print_matrix(int **matrix, int cols, int rows)
-{
-	int	i;
-	int	j;
-
-	if (!matrix)
-		return ;
-	i = 0;
-	while (i < rows)
-	{
-		j = 0;
-		while (j < cols)
-		{
-			printf("%d ", matrix[i][j]);
-			j++;
-		}
-		printf("\n");
-		i++;
-	}
 }

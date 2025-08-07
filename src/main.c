@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 18:22:43 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/08/03 20:50:47 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/08/07 12:25:27 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,12 @@ int	main(int ac, char **av)
 	info = NULL;
 	map = NULL;
 	if (!parse_input(ac, av, &info, &map))
-		printf("DEBUG: Deu ruim no mapa\n");
+		printf("Error!\n");
 	else
 	{
 		execution(map);
 	}
 	if (map)
 		free_map(&map);
-	printf("DEBUG: main() -> finish :)) \n");
 	return (0);
 }

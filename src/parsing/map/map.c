@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 14:31:37 by diego             #+#    #+#             */
-/*   Updated: 2025/07/29 20:13:09 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/08/07 12:56:11 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ bool	is_valid_map(char *file_name, t_map **map, t_info **info)
 	init_matrix(file_name, *map);
 	if (!count_letters(*map))
 	{
-		printf("Error: TEM ZERO SPAWNS\n");
+		printf("Error: Invalid spawn count\n");
 		return (false);
 	}
 	if (!flood_fill_validation(map))

@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 15:33:36 by dteruya           #+#    #+#             */
-/*   Updated: 2025/07/25 15:27:30 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/08/07 12:53:58 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,6 @@ void	init_north(t_info *info, int *i, char *line)
 	}
 	info->north_path = value;
 	if (!info->north_path)
-		print_and_exit("Error in norht!");
+		print_and_exit("Error in north!");
 	info->north_path = value;
 }

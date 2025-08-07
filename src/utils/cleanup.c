@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 17:16:53 by dteruya           #+#    #+#             */
-/*   Updated: 2025/08/03 20:44:43 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/08/07 12:26:56 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,5 @@ void	free_map(t_map **map)
 int	close_game(t_map *map)
 {
 	free_map(&map);
-	ft_printf("aaaaaaaaaaa\n");
 	exit(0);
 }

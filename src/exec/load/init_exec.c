@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 18:36:26 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/08/05 09:04:11 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/08/07 12:25:33 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ static void	set_direction_values(t_map *map)
 	set_south_values(map);
 	set_east_values(map);
 	set_west_values(map);
-	printf("DEBUG: set_direction_values() finished\n");
 }
 
 void	init_player(t_map *map)

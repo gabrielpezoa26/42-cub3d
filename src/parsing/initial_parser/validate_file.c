@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 00:46:41 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/07/28 20:39:52 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/08/07 12:26:40 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,7 @@ static bool	is_empty_file(char *file_name)
 static bool	verify_info(t_info **info)
 {
 	if (!(*info)->south_path)
-	{
-		printf("DEBUG: dasdsadsa\n");
 		return (false);
-	}
 	if (!(*info)->west_path)
 		return (false);
 	if (!(*info)->east_path)
